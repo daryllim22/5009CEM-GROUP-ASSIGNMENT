@@ -25,12 +25,14 @@ public class CreateDBTable {
         
         //call the createTable function
         createTable();
-        insertTable("admin1","admin1");
-        insertTable("admin2","admin2");
+        
+        //Insert 2 admin username and password
+        insertAdminTable("admin1","admin1");
+        insertAdminTable("admin2","admin2");
         
         }
     
-   private static void insertTable(String username, String password) throws Exception {
+   private static void insertAdminTable(String username, String password) throws Exception {
         Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
          PreparedStatement checkUsername = conn.prepareStatement("SELECT * FROM admin WHERE username = ?");
         checkUsername.setString(1, username);
@@ -100,6 +102,7 @@ public class CreateDBTable {
             System.out.println(e);
         }
         
+        // 
     }  
 }
 

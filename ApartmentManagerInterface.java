@@ -76,7 +76,6 @@ public class ApartmentManagerInterface extends javax.swing.JFrame {
         jDesktopPane7 = new javax.swing.JDesktopPane();
         jDesktopPane8 = new javax.swing.JDesktopPane();
 
-        monthlyTrack_dialog.setMaximumSize(new java.awt.Dimension(359, 158));
         monthlyTrack_dialog.setMinimumSize(new java.awt.Dimension(359, 158));
         monthlyTrack_dialog.setResizable(false);
         monthlyTrack_dialog.setLocation(200, 300);

@@ -94,15 +94,47 @@ public class CreateDBTable {
             if (resultSet.next()) {
                 System.out.println("Resident Table already exists.");
             } else {
-                PreparedStatement create = conn.prepareStatement("CREATE TABLE resident(id int NOT NULL AUTO_INCREMENT, username varchar(255), password varchar(255), PRIMARY KEY(id))");
+                PreparedStatement create = conn.prepareStatement("CREATE TABLE resident(id int NOT NULL AUTO_INCREMENT, unit_number varchar(255), password varchar(255),resident_name varchar(255),email varchar(255),telefon_number varchar(255),car_plate_no varchar(255), PRIMARY KEY(id))");
                 create.executeUpdate();
-                System.out.println("Guard Table created.");
+                System.out.println("Resident Table created.");
             }
             } catch (Exception e) {
             System.out.println(e);
         }
         
-        // 
+        // Manager Forum Table
+        try {
+            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+             PreparedStatement checkTable = conn.prepareStatement("SHOW TABLES LIKE 'manager_forum'");
+            ResultSet resultSet = checkTable.executeQuery();
+
+            if (resultSet.next()) {
+                System.out.println("Manager Forum Table already exists.");
+            } else {
+                PreparedStatement create = conn.prepareStatement("CREATE TABLE manager_forum(id int NOT NULL AUTO_INCREMENT, title varchar(255), text varchar(255),unitnumber varchar(255),resident_name varchar(255), PRIMARY KEY(id))");
+                create.executeUpdate();
+                System.out.println("Manager Forum Table created.");
+            }
+            } catch (Exception e) {
+            System.out.println(e);
+        }
+        
+        //Resident Forum table
+        try {
+            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+             PreparedStatement checkTable = conn.prepareStatement("SHOW TABLES LIKE 'resident_forum'");
+            ResultSet resultSet = checkTable.executeQuery();
+
+            if (resultSet.next()) {
+                System.out.println("Resident Forum Table already exists.");
+            } else {
+                PreparedStatement create = conn.prepareStatement("CREATE TABLE resident_forum(id int NOT NULL AUTO_INCREMENT, title varchar(255), text varchar(255),unitnumber varchar(255),resident_name varchar(255), PRIMARY KEY(id))");
+                create.executeUpdate();
+                System.out.println("Resident Forum Table created.");
+            }
+            } catch (Exception e) {
+            System.out.println(e);
+        }
     }  
 }
 

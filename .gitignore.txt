@@ -1,2 +1,0 @@
-ApartmentManagerInterface.java
-ApartmentManagerInterface.form

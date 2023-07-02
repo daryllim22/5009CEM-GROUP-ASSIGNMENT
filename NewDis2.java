@@ -1,9 +1,14 @@
+package apartment.management.system;
+
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-import java.sql.*;
-import javax.swing.JOptionPane;
+
 /**
  *
  * @author HP OMEN
@@ -16,6 +21,16 @@ public class NewDis2 extends javax.swing.JFrame {
     public NewDis2() {
         initComponents();
     }
+    
+    private String unitnumber;
+    private String residentName;
+    
+    NewDis2(String unitnumber, String residentName) {
+       initComponents();
+       this.unitnumber = unitnumber;
+       this.residentName = residentName;
+    }
+    
  public void close(){
 dispose();
 }
@@ -98,6 +113,11 @@ dispose();
         jScrollPane1.setViewportView(jTextArea1);
 
         jButton8.setText("Post");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         jDesktopPane2.setLayer(jButton7, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -195,36 +215,46 @@ dispose();
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         close();
-        Forum pi = new Forum ();
+        Forum pi = new Forum (unitnumber,residentName);
+        pi.setTitle("Forum Page");
+        pi.setLocationRelativeTo(null);
         pi.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         close();
         BillPay pi = new BillPay ();
+        pi.setTitle("Bill Payment");
+        pi.setLocationRelativeTo(null);
         pi.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         close();
-        RD pi = new RD ();
+        RD pi = new RD (unitnumber,residentName);
+        pi.setTitle("Resident Details");
+        pi.setLocationRelativeTo(null);
         pi.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         close();
         NewM pi = new NewM ();
+        pi.setTitle("New Message");
+        pi.setLocationRelativeTo(null);
         pi.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         this.hide();
-        MForum frm = new MForum();
-        frm.setVisible(true);        // TODO add your handling code here:
+        MForum pi = new MForum(unitnumber,residentName);
+        pi.setTitle("Manager Forum");
+        pi.setLocationRelativeTo(null);
+        pi.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-int res =  JOptionPane.showConfirmDialog(jButton6, "Are you sure you want to sign out?", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        int res =  JOptionPane.showConfirmDialog(jButton6, "Are you sure you want to sign out?", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 // JOptionPane.setRootFrame(null);
                 if (res == JOptionPane.YES_OPTION) {
                     dispose();
@@ -234,12 +264,51 @@ int res =  JOptionPane.showConfirmDialog(jButton6, "Are you sure you want to sig
                     login.setVisible(true);
                 }else{
                     dispose();
-                    NewDis2 rd = new NewDis2(unitnumber,residentName);
-                    rd.setTitle("New Discussion (Manager Forum)");
-                    rd.setLocationRelativeTo(null); //center the form
-                    rd.setVisible(true);
-                }        // TODO add your handling code here:
+                    NewDis2 new2 = new NewDis2(unitnumber,residentName);
+                    new2.setTitle("");
+                    new2.setLocationRelativeTo(null); //center the form
+                    new2.setVisible(true);
+                }
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        String title = jTextField1.getText();
+        String text = jTextArea1.getText();
+        
+        //validation check
+        if(title.isEmpty() || text.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Title or Text is empty!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            //Connect to Database
+            Connection conn = ConnectDB.connectDB();
+        if(conn != null){
+            try {
+                //insert the data into database 
+                PreparedStatement insert = (PreparedStatement)conn.prepareStatement("INSERT INTO manager_forum(title,text,unitnumber,resident_name)values(?,?,?,?)");
+                insert.setString(1, title);
+                insert.setString(2, text);
+                insert.setString(3, unitnumber);
+                insert.setString(4, residentName);
+                insert.executeUpdate();
+                
+                 JOptionPane.showMessageDialog(this, "Forum have been added!");
+                
+                // After successful insertion, go back to the Forum page.
+                // Close the current page.
+                close(); 
+                Forum forumPage = new Forum(unitnumber,residentName);
+                forumPage.setVisible(true);
+
+
+                            
+            } catch (SQLException ex) {
+                Logger.getLogger(NewDis2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    } 
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
      * @param args the command line arguments

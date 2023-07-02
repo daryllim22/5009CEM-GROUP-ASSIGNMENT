@@ -4,6 +4,8 @@
  */
 package pkg5009cem_assignment;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author sjjde
@@ -37,7 +39,7 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
         newDis_btn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        mForumDis_table = new javax.swing.JTable();
         visitorTrack_navbtn = new javax.swing.JButton();
         forum_navbtn = new javax.swing.JButton();
         paymentTrack_navbtn = new javax.swing.JButton();
@@ -64,15 +66,13 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
         jDesktopPane1.add(newDis_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Discussions: Management Forum");
         jDesktopPane1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        mForumDis_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+
             },
             new String [] {
                 ""
@@ -86,7 +86,7 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(mForumDis_table);
 
         jDesktopPane1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 680, 340));
 
@@ -154,6 +154,8 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
         
         close();
         MVisitorTrackingMain pi = new MVisitorTrackingMain();
+        pi.setTitle("Visitor Tracking");
+        pi.setLocationRelativeTo(null); //center the form
         pi.setVisible(true);
         
     }//GEN-LAST:event_visitorTrack_navbtnActionPerformed
@@ -163,6 +165,8 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
     
         close();
         MBillPayTrackingMain pi = new MBillPayTrackingMain();
+        pi.setTitle("Bill Payment Tracking");
+        pi.setLocationRelativeTo(null); //center the form
         pi.setVisible(true);
         
     }//GEN-LAST:event_paymentTrack_navbtnActionPerformed
@@ -172,6 +176,8 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
     
         close();
         MResidentAccountsMain pi = new MResidentAccountsMain();
+        pi.setTitle("Resident Accounts");
+        pi.setLocationRelativeTo(null); //center the form
         pi.setVisible(true);
         
     }//GEN-LAST:event_residentAcc_navbtnActionPerformed
@@ -179,7 +185,21 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
     //when user clicks on the 'logout' button
     private void logout_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout_btnActionPerformed
     
-        // TODO add your handling code here:
+        int res = JOptionPane.showConfirmDialog(logout_btn, "Are you sure you want to sign out?", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (res == JOptionPane.YES_OPTION) {
+                dispose();
+                MainLogin login = new MainLogin();
+                login.setTitle("Main Login Page");
+                login.setLocationRelativeTo(null); //center the form
+                login.setVisible(true);
+            }
+            else {
+                dispose();
+                MFeedbackForumMain pi = new MFeedbackForumMain();
+                pi.setTitle("Resident Accounts");
+                pi.setLocationRelativeTo(null); //center the form
+                pi.setVisible(true);
+            }
         
     }//GEN-LAST:event_logout_btnActionPerformed
 
@@ -226,8 +246,8 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton logout_btn;
+    private javax.swing.JTable mForumDis_table;
     private javax.swing.JButton newDis_btn;
     private javax.swing.JButton paymentTrack_navbtn;
     private javax.swing.JButton residentAcc_navbtn;

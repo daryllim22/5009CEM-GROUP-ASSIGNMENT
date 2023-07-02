@@ -10,17 +10,17 @@ import javax.swing.JOptionPane;
  *
  * @author sjjde
  */
-public class MBillPayTrackingMain extends javax.swing.JFrame {
+public class MCreateNewResident extends javax.swing.JFrame {
 
     /**
-     * Creates new form BillPayTrackingMain
+     * Creates new form MCreateNewResident
      */
-    public MBillPayTrackingMain() {
+    public MCreateNewResident() {
         initComponents();
     }
     
     
-    //close entire UI window when navbtn clicked
+    //close entire UI page when navbtn clicked
     public void close() {
         dispose();
     }
@@ -37,8 +37,12 @@ public class MBillPayTrackingMain extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        newUnitNumber_input = new javax.swing.JTextField();
+        newPassword_input = new javax.swing.JTextField();
+        createAcc_btn = new javax.swing.JButton();
+        back_btn = new javax.swing.JButton();
         visitorTrack_navbtn = new javax.swing.JButton();
         forum_navbtn = new javax.swing.JButton();
         paymentTrack_navbtn = new javax.swing.JButton();
@@ -50,6 +54,7 @@ public class MBillPayTrackingMain extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(857, 497));
         setMinimumSize(new java.awt.Dimension(857, 497));
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setMaximumSize(new java.awt.Dimension(857, 497));
         jPanel1.setMinimumSize(new java.awt.Dimension(857, 497));
@@ -61,60 +66,74 @@ public class MBillPayTrackingMain extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Residents' monthly payment record");
+        jLabel2.setText("Create new resident account");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Unit number:");
 
-            },
-            new String [] {
-                "Unit no.", "Maintenance fee", "Sinking fee"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Password:");
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+        createAcc_btn.setText("Create account");
+        createAcc_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createAcc_btnActionPerformed(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMinWidth(150);
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(150);
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(150);
-        }
+
+        back_btn.setText("<BACK");
+        back_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                back_btnActionPerformed(evt);
+            }
+        });
 
         jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(newUnitNumber_input, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(newPassword_input, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(createAcc_btn, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(back_btn, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(27, 27, 27)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(233, Short.MAX_VALUE))
+                    .addComponent(back_btn)
+                    .addComponent(createAcc_btn)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(newUnitNumber_input, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+                            .addComponent(newPassword_input))))
+                .addContainerGap(374, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(22, 22, 22)
+                .addComponent(back_btn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(newUnitNumber_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(newPassword_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(createAcc_btn)
+                .addContainerGap(272, Short.MAX_VALUE))
         );
 
         jPanel1.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, -1, -1));
@@ -136,14 +155,14 @@ public class MBillPayTrackingMain extends javax.swing.JFrame {
         jPanel1.add(forum_navbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 130, -1));
 
         paymentTrack_navbtn.setText("Bill Payment Tracking");
+        paymentTrack_navbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                paymentTrack_navbtnActionPerformed(evt);
+            }
+        });
         jPanel1.add(paymentTrack_navbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 130, -1));
 
         residentAcc_navbtn.setText("Resident Accounts");
-        residentAcc_navbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                residentAcc_navbtnActionPerformed(evt);
-            }
-        });
         jPanel1.add(residentAcc_navbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 130, -1));
 
         logout_btn.setText("Logout");
@@ -154,23 +173,10 @@ public class MBillPayTrackingMain extends javax.swing.JFrame {
         });
         jPanel1.add(logout_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, -1, -1));
 
-        jLabel1.setText("Bill Payment Tracking");
+        jLabel1.setText("Resident Accounts - Create new resident account");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -198,20 +204,20 @@ public class MBillPayTrackingMain extends javax.swing.JFrame {
         
     }//GEN-LAST:event_forum_navbtnActionPerformed
 
-    //when user clicks on the button to navigate to 'Resident Accounts'
-    private void residentAcc_navbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residentAcc_navbtnActionPerformed
-    
+    //when user clicks on the button to navigate to 'Bill Payment Tracking'
+    private void paymentTrack_navbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paymentTrack_navbtnActionPerformed
+        
         close();
-        MResidentAccountsMain pi = new MResidentAccountsMain();
-        pi.setTitle("Resident Accounts");
+        MBillPayTrackingMain pi = new MBillPayTrackingMain();
+        pi.setTitle("Bill Payment Tracking");
         pi.setLocationRelativeTo(null); //center the form
         pi.setVisible(true);
         
-    }//GEN-LAST:event_residentAcc_navbtnActionPerformed
+    }//GEN-LAST:event_paymentTrack_navbtnActionPerformed
 
     //when user clicks on the 'logout' button
     private void logout_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout_btnActionPerformed
-    
+        
         int res = JOptionPane.showConfirmDialog(logout_btn, "Are you sure you want to sign out?", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (res == JOptionPane.YES_OPTION) {
                 dispose();
@@ -222,13 +228,31 @@ public class MBillPayTrackingMain extends javax.swing.JFrame {
             }
             else {
                 dispose();
-                MBillPayTrackingMain pi = new MBillPayTrackingMain();
+                MResidentAccountsMain pi = new MResidentAccountsMain();
                 pi.setTitle("Resident Accounts");
                 pi.setLocationRelativeTo(null); //center the form
                 pi.setVisible(true);
             }
-        
+            
     }//GEN-LAST:event_logout_btnActionPerformed
+
+    //when user clicks on the 'BACK' button
+    private void back_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_back_btnActionPerformed
+        
+        close();
+        MCreateNewResident pi = new MCreateNewResident();
+        pi.setTitle("Resident Accounts");
+        pi.setLocationRelativeTo(null); //center the form
+        pi.setVisible(true);
+        
+    }//GEN-LAST:event_back_btnActionPerformed
+
+    
+    //functionality code
+    //when user clicks on the 'Create account' button
+    private void createAcc_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAcc_btnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_createAcc_btnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -247,34 +271,37 @@ public class MBillPayTrackingMain extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MBillPayTrackingMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MCreateNewResident.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MBillPayTrackingMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MCreateNewResident.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MBillPayTrackingMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MCreateNewResident.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MBillPayTrackingMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MCreateNewResident.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MBillPayTrackingMain().setVisible(true);
+                new MCreateNewResident().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton back_btn;
+    private javax.swing.JButton createAcc_btn;
     private javax.swing.JButton forum_navbtn;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton logout_btn;
+    private javax.swing.JTextField newPassword_input;
+    private javax.swing.JTextField newUnitNumber_input;
     private javax.swing.JButton paymentTrack_navbtn;
     private javax.swing.JButton residentAcc_navbtn;
     private javax.swing.JButton visitorTrack_navbtn;

@@ -176,24 +176,32 @@ dispose();
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         close();
         Forum pi = new Forum (unitnumber,residentName);
+        pi.setTitle("Forum Page");
+        pi.setLocationRelativeTo(null);
         pi.setVisible(true);
     }                                        
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         close();
         RD pi = new RD (unitnumber,residentName);
+        pi.setTitle("Resident Detail");
+        pi.setLocationRelativeTo(null);
         pi.setVisible(true);        // TODO add your handling code here:
     }                                        
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         close();
         BillPay pi = new BillPay ();
+        pi.setTitle("Bill Payment");
+        pi.setLocationRelativeTo(null);
         pi.setVisible(true);     // TODO add your handling code here:
     }                                        
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         close();
         NewM pi = new NewM ();
+        pi.setTitle("New Message");
+        pi.setLocationRelativeTo(null);
         pi.setVisible(true);        // TODO add your handling code here:
     }                                        
 

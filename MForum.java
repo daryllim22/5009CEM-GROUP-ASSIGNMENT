@@ -1,9 +1,12 @@
+package apartment.management.system;
+
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-import java.sql.*;
-import javax.swing.JOptionPane;
+
 /**
  *
  * @author HP OMEN
@@ -15,6 +18,16 @@ public class MForum extends javax.swing.JFrame {
      */
     public MForum() {
         initComponents();
+    }
+    
+    private String unitnumber;
+    private String residentName;
+    
+    MForum(String unitnumber, String residentName) {
+       initComponents();
+       this.unitnumber = unitnumber;
+       this.residentName = residentName;
+       
     }
 
     public void close(){
@@ -76,7 +89,7 @@ dispose();
             }
         });
 
-        jLabel1.setText("Manager Forum");
+        jLabel1.setText("New Discussion (Manager Forum)");
 
         jButton7.setText("<Back");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -166,42 +179,54 @@ dispose();
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         close();
-        Forum pi = new Forum ();
+        Forum pi = new Forum (unitnumber,residentName);
+        pi.setTitle("Forum Page");
+        pi.setLocationRelativeTo(null);
         pi.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         close();
         BillPay pi = new BillPay ();
+        pi.setTitle("Bill Payment");
+        pi.setLocationRelativeTo(null);
         pi.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         close();
-        RD pi = new RD ();
+        RD pi = new RD (unitnumber,residentName);
+        pi.setTitle("Resident Details");
+        pi.setLocationRelativeTo(null);
         pi.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         close();
         NewM pi = new NewM ();
+        pi.setTitle("New Message");
+        pi.setLocationRelativeTo(null);
         pi.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         this.hide();
-        Forum frm = new Forum();
-        frm.setVisible(true);         // TODO add your handling code here:
+        Forum pi = new Forum(unitnumber,residentName);
+        pi.setTitle("Forum Page");
+        pi.setLocationRelativeTo(null);
+        pi.setVisible(true);         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         close();
-        NewDis2 pi = new NewDis2 ();
+        NewDis2 pi = new NewDis2 (unitnumber,residentName);
+        pi.setTitle("");
+        pi.setLocationRelativeTo(null);
         pi.setVisible(true);   // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-int res =  JOptionPane.showConfirmDialog(jButton6, "Are you sure you want to sign out?", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        int res =  JOptionPane.showConfirmDialog(jButton6, "Are you sure you want to sign out?", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 // JOptionPane.setRootFrame(null);
                 if (res == JOptionPane.YES_OPTION) {
                     dispose();
@@ -211,11 +236,11 @@ int res =  JOptionPane.showConfirmDialog(jButton6, "Are you sure you want to sig
                     login.setVisible(true);
                 }else{
                     dispose();
-                    MForum rd = new MForum(unitnumber,residentName);
-                    rd.setTitle("Manager Forum");
-                    rd.setLocationRelativeTo(null); //center the form
-                    rd.setVisible(true);
-                }       // TODO add your handling code here:
+                    MForum mforum = new MForum(unitnumber,residentName);
+                    mforum.setTitle("Manager Forum");
+                    mforum.setLocationRelativeTo(null); //center the form
+                    mforum.setVisible(true);
+                }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     /**

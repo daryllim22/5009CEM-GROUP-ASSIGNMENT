@@ -120,7 +120,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Resident Forum"/>
+        <Property name="text" type="java.lang.String" value="New Discussion (Resident Forum)"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JDesktopPane" name="jDesktopPane2">

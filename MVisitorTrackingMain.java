@@ -4,6 +4,8 @@
  */
 package pkg5009cem_assignment;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author sjjde
@@ -208,6 +210,8 @@ public class MVisitorTrackingMain extends javax.swing.JFrame {
         
         close();
         MFeedbackForumMain pi = new MFeedbackForumMain();
+        pi.setTitle("Feedback Forum");
+        pi.setLocationRelativeTo(null); //center the form
         pi.setVisible(true);
         
     }//GEN-LAST:event_forum_navbtnActionPerformed
@@ -217,6 +221,8 @@ public class MVisitorTrackingMain extends javax.swing.JFrame {
         
         close();
         MBillPayTrackingMain pi = new MBillPayTrackingMain();
+        pi.setTitle("Bill Payment Tracking");
+        pi.setLocationRelativeTo(null); //center the form
         pi.setVisible(true);
         
     }//GEN-LAST:event_paymentTrack_navbtnActionPerformed
@@ -226,6 +232,8 @@ public class MVisitorTrackingMain extends javax.swing.JFrame {
         
         close();
         MResidentAccountsMain pi = new MResidentAccountsMain();
+        pi.setTitle("Resident Accounts");
+        pi.setLocationRelativeTo(null); //center the form
         pi.setVisible(true);
         
     }//GEN-LAST:event_residentAcc_navbtnActionPerformed
@@ -233,7 +241,21 @@ public class MVisitorTrackingMain extends javax.swing.JFrame {
     //when user clicks on the 'logout' button
     private void logout_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout_btnActionPerformed
     
-        // TODO add your handling code here:
+        int res = JOptionPane.showConfirmDialog(logout_btn, "Are you sure you want to sign out?", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (res == JOptionPane.YES_OPTION) {
+                dispose();
+                MainLogin login = new MainLogin();
+                login.setTitle("Main Login Page");
+                login.setLocationRelativeTo(null); //center the form
+                login.setVisible(true);
+            }
+            else {
+                dispose();
+                MVisitorTrackingMain pi = new MVisitorTrackingMain();
+                pi.setTitle("Resident Accounts");
+                pi.setLocationRelativeTo(null); //center the form
+                pi.setVisible(true);
+            }
         
     }//GEN-LAST:event_logout_btnActionPerformed
 

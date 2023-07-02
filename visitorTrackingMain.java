@@ -60,7 +60,6 @@ public class VisitorTrackingMain extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(857, 497));
         setMinimumSize(new java.awt.Dimension(857, 497));
-        setPreferredSize(new java.awt.Dimension(857, 497));
         setResizable(false);
 
         jPanel1.setMaximumSize(new java.awt.Dimension(832, 471));
@@ -70,7 +69,6 @@ public class VisitorTrackingMain extends javax.swing.JFrame {
 
         jDesktopPane1.setMaximumSize(new java.awt.Dimension(720, 460));
         jDesktopPane1.setMinimumSize(new java.awt.Dimension(720, 460));
-        jDesktopPane1.setPreferredSize(new java.awt.Dimension(720, 460));
         jDesktopPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -208,21 +206,27 @@ public class VisitorTrackingMain extends javax.swing.JFrame {
     //when user clicks on the button to navigate to 'Feedback Forum'
     private void forum_navbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forum_navbtnActionPerformed
         
-        //TODO  
+        close();
+        FeedbackForumMain pi = new FeedbackForumMain();
+        pi.setVisible(true);
         
     }//GEN-LAST:event_forum_navbtnActionPerformed
 
     //when user clicks on the button to navigate to 'Bill Payment Tracking'
     private void paymentTrack_navbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paymentTrack_navbtnActionPerformed
         
-        //TODO
+        close();
+        BillPayTrackingMain pi = new BillPayTrackingMain();
+        pi.setVisible(true);
         
     }//GEN-LAST:event_paymentTrack_navbtnActionPerformed
 
     //when user clicks on the button to navigate to 'Resident Accounts'
     private void residentAcc_navbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residentAcc_navbtnActionPerformed
         
-        //TODO
+        close();
+        ResidentAccountsMain pi = new ResidentAccountsMain();
+        pi.setVisible(true);
         
     }//GEN-LAST:event_residentAcc_navbtnActionPerformed
 

@@ -8,12 +8,12 @@ package pkg5009cem_assignment;
  *
  * @author sjjde
  */
-public class FeedbackForumMain extends javax.swing.JFrame {
+public class BillPayTrackingMain extends javax.swing.JFrame {
 
     /**
-     * Creates new form FeedbackForumMain
+     * Creates new form BillPayTrackingMain
      */
-    public FeedbackForumMain() {
+    public BillPayTrackingMain() {
         initComponents();
     }
     
@@ -34,8 +34,7 @@ public class FeedbackForumMain extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
-        newDis_btn = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         visitorTrack_navbtn = new javax.swing.JButton();
@@ -43,11 +42,12 @@ public class FeedbackForumMain extends javax.swing.JFrame {
         paymentTrack_navbtn = new javax.swing.JButton();
         residentAcc_navbtn = new javax.swing.JButton();
         logout_btn = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(595, 370));
-        setMinimumSize(new java.awt.Dimension(595, 370));
+        setMaximumSize(new java.awt.Dimension(857, 497));
+        setMinimumSize(new java.awt.Dimension(857, 497));
+        setPreferredSize(new java.awt.Dimension(857, 497));
         setResizable(false);
 
         jPanel1.setMaximumSize(new java.awt.Dimension(857, 497));
@@ -57,38 +57,66 @@ public class FeedbackForumMain extends javax.swing.JFrame {
 
         jDesktopPane1.setMaximumSize(new java.awt.Dimension(720, 460));
         jDesktopPane1.setMinimumSize(new java.awt.Dimension(720, 460));
-        jDesktopPane1.setPreferredSize(new java.awt.Dimension(720, 460));
-        jDesktopPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        newDis_btn.setText("+ new discussion");
-        jDesktopPane1.add(newDis_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel1.setText("Discussions: Management Forum");
-        jDesktopPane1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel2.setText("Residents' monthly payment record");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                ""
+                "Unit no.", "Maintenance fee", "Sinking fee"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setMinWidth(150);
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(150);
+            jTable1.getColumnModel().getColumn(0).setMaxWidth(150);
+        }
 
-        jDesktopPane1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 680, 340));
+        jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(233, Short.MAX_VALUE))
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(57, Short.MAX_VALUE))
+        );
 
         jPanel1.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, -1, -1));
 
@@ -101,14 +129,14 @@ public class FeedbackForumMain extends javax.swing.JFrame {
         jPanel1.add(visitorTrack_navbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 130, -1));
 
         forum_navbtn.setText("Feedback Forum");
+        forum_navbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                forum_navbtnActionPerformed(evt);
+            }
+        });
         jPanel1.add(forum_navbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 130, -1));
 
         paymentTrack_navbtn.setText("Bill Payment Tracking");
-        paymentTrack_navbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                paymentTrack_navbtnActionPerformed(evt);
-            }
-        });
         jPanel1.add(paymentTrack_navbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 130, -1));
 
         residentAcc_navbtn.setText("Resident Accounts");
@@ -127,8 +155,8 @@ public class FeedbackForumMain extends javax.swing.JFrame {
         });
         jPanel1.add(logout_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, -1, -1));
 
-        jLabel2.setText("Feedback Forum");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        jLabel1.setText("Bill Payment Tracking");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -158,14 +186,14 @@ public class FeedbackForumMain extends javax.swing.JFrame {
         
     }//GEN-LAST:event_visitorTrack_navbtnActionPerformed
 
-    //when user clicks on the button to navigate to 'Bill Payment Tracking'
-    private void paymentTrack_navbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paymentTrack_navbtnActionPerformed
-    
+    //when user clicks on the button to navigate to 'Feedback Forum'
+    private void forum_navbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forum_navbtnActionPerformed
+        
         close();
-        BillPayTrackingMain pi = new BillPayTrackingMain();
+        FeedbackForumMain pi = new FeedbackForumMain();
         pi.setVisible(true);
         
-    }//GEN-LAST:event_paymentTrack_navbtnActionPerformed
+    }//GEN-LAST:event_forum_navbtnActionPerformed
 
     //when user clicks on the button to navigate to 'Resident Accounts'
     private void residentAcc_navbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residentAcc_navbtnActionPerformed
@@ -200,20 +228,20 @@ public class FeedbackForumMain extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FeedbackForumMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BillPayTrackingMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FeedbackForumMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BillPayTrackingMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FeedbackForumMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BillPayTrackingMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FeedbackForumMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BillPayTrackingMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FeedbackForumMain().setVisible(true);
+                new BillPayTrackingMain().setVisible(true);
             }
         });
     }
@@ -227,7 +255,6 @@ public class FeedbackForumMain extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JButton logout_btn;
-    private javax.swing.JButton newDis_btn;
     private javax.swing.JButton paymentTrack_navbtn;
     private javax.swing.JButton residentAcc_navbtn;
     private javax.swing.JButton visitorTrack_navbtn;

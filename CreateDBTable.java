@@ -58,11 +58,11 @@ public class CreateDBTable {
             ResultSet resultSet = checkTable.executeQuery();
 
             if (resultSet.next()) {
-                System.out.println("Admin Table already exists.");
+                System.out.println("admin Table already exists.");
             } else {
                 PreparedStatement create = conn.prepareStatement("CREATE TABLE admin(id int NOT NULL AUTO_INCREMENT, username varchar(255), password varchar(255), PRIMARY KEY(id))");
                 create.executeUpdate();
-                System.out.println("Admin Table created.");
+                System.out.println("admin Table created.");
             }
             } catch (Exception e) {
             System.out.println(e);
@@ -75,11 +75,11 @@ public class CreateDBTable {
             ResultSet resultSet = checkTable.executeQuery();
 
             if (resultSet.next()) {
-                System.out.println("Guard Table already exists.");
+                System.out.println("guard Table already exists.");
             } else {
                 PreparedStatement create = conn.prepareStatement("CREATE TABLE guard(id int NOT NULL AUTO_INCREMENT, username varchar(255), password varchar(255), PRIMARY KEY(id))");
                 create.executeUpdate();
-                System.out.println("Guard Table created.");
+                System.out.println("guard Table created.");
             }
             } catch (Exception e) {
             System.out.println(e);
@@ -92,11 +92,11 @@ public class CreateDBTable {
             ResultSet resultSet = checkTable.executeQuery();
 
             if (resultSet.next()) {
-                System.out.println("Resident Table already exists.");
+                System.out.println("resident Table already exists.");
             } else {
                 PreparedStatement create = conn.prepareStatement("CREATE TABLE resident(id int NOT NULL AUTO_INCREMENT, unit_number varchar(255), password varchar(255),resident_name varchar(255),email varchar(255),telefon_number varchar(255),car_plate_no varchar(255), PRIMARY KEY(id))");
                 create.executeUpdate();
-                System.out.println("Resident Table created.");
+                System.out.println("resident Table created.");
             }
             } catch (Exception e) {
             System.out.println(e);
@@ -109,11 +109,11 @@ public class CreateDBTable {
             ResultSet resultSet = checkTable.executeQuery();
 
             if (resultSet.next()) {
-                System.out.println("Manager Forum Table already exists.");
+                System.out.println("manager_forum Table already exists.");
             } else {
                 PreparedStatement create = conn.prepareStatement("CREATE TABLE manager_forum(id int NOT NULL AUTO_INCREMENT, title varchar(255), text varchar(255),unitnumber varchar(255),resident_name varchar(255), PRIMARY KEY(id))");
                 create.executeUpdate();
-                System.out.println("Manager Forum Table created.");
+                System.out.println("manager_forum Table created.");
             }
             } catch (Exception e) {
             System.out.println(e);
@@ -126,11 +126,28 @@ public class CreateDBTable {
             ResultSet resultSet = checkTable.executeQuery();
 
             if (resultSet.next()) {
-                System.out.println("Resident Forum Table already exists.");
+                System.out.println("resident_forum Table already exists.");
             } else {
                 PreparedStatement create = conn.prepareStatement("CREATE TABLE resident_forum(id int NOT NULL AUTO_INCREMENT, title varchar(255), text varchar(255),unitnumber varchar(255),resident_name varchar(255), PRIMARY KEY(id))");
                 create.executeUpdate();
-                System.out.println("Resident Forum Table created.");
+                System.out.println("resident_forum Table created.");
+            }
+            } catch (Exception e) {
+            System.out.println(e);
+        }
+        
+        // Visitor Tracking Table
+        try {
+            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+             PreparedStatement checkTable = conn.prepareStatement("SHOW TABLES LIKE 'visitor'");
+            ResultSet resultSet = checkTable.executeQuery();
+
+            if (resultSet.next()) {
+                System.out.println("visitor Table already exists.");
+            } else {
+                PreparedStatement create = conn.prepareStatement("CREATE TABLE visitor(id int NOT NULL AUTO_INCREMENT, name varchar(255), car_plate_no varchar(255),reason_visit varchar(255),date varchar(255),month varchar(255),time_in varchar(255),time_out varchar(255), PRIMARY KEY(id))");
+                create.executeUpdate();
+                System.out.println("visitor Table created.");
             }
             } catch (Exception e) {
             System.out.println(e);

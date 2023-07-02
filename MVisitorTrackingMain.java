@@ -8,12 +8,12 @@ package pkg5009cem_assignment;
  *
  * @author sjjde
  */
-public class VisitorTrackingMain extends javax.swing.JFrame {
+public class MVisitorTrackingMain extends javax.swing.JFrame {
 
     /**
      * Creates new form visitorTrackingMain
      */
-    public VisitorTrackingMain() {
+    public MVisitorTrackingMain() {
         initComponents();
     }
     
@@ -207,7 +207,7 @@ public class VisitorTrackingMain extends javax.swing.JFrame {
     private void forum_navbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forum_navbtnActionPerformed
         
         close();
-        FeedbackForumMain pi = new FeedbackForumMain();
+        MFeedbackForumMain pi = new MFeedbackForumMain();
         pi.setVisible(true);
         
     }//GEN-LAST:event_forum_navbtnActionPerformed
@@ -216,7 +216,7 @@ public class VisitorTrackingMain extends javax.swing.JFrame {
     private void paymentTrack_navbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paymentTrack_navbtnActionPerformed
         
         close();
-        BillPayTrackingMain pi = new BillPayTrackingMain();
+        MBillPayTrackingMain pi = new MBillPayTrackingMain();
         pi.setVisible(true);
         
     }//GEN-LAST:event_paymentTrack_navbtnActionPerformed
@@ -225,7 +225,7 @@ public class VisitorTrackingMain extends javax.swing.JFrame {
     private void residentAcc_navbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residentAcc_navbtnActionPerformed
         
         close();
-        ResidentAccountsMain pi = new ResidentAccountsMain();
+        MResidentAccountsMain pi = new MResidentAccountsMain();
         pi.setVisible(true);
         
     }//GEN-LAST:event_residentAcc_navbtnActionPerformed
@@ -258,21 +258,23 @@ public class VisitorTrackingMain extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VisitorTrackingMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MVisitorTrackingMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VisitorTrackingMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MVisitorTrackingMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VisitorTrackingMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MVisitorTrackingMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VisitorTrackingMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MVisitorTrackingMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VisitorTrackingMain().setVisible(true);
+                new MVisitorTrackingMain().setVisible(true);
             }
         });
     }

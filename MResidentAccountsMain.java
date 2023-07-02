@@ -8,12 +8,12 @@ package pkg5009cem_assignment;
  *
  * @author sjjde
  */
-public class ResidentAccountsMain extends javax.swing.JFrame {
+public class MResidentAccountsMain extends javax.swing.JFrame {
 
     /**
      * Creates new form ResidentAccountsMain
      */
-    public ResidentAccountsMain() {
+    public MResidentAccountsMain() {
         initComponents();
     }
     
@@ -116,7 +116,7 @@ public class ResidentAccountsMain extends javax.swing.JFrame {
     private void visitorTrack_navbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitorTrack_navbtnActionPerformed
         
         close();
-        VisitorTrackingMain pi = new VisitorTrackingMain();
+        MVisitorTrackingMain pi = new MVisitorTrackingMain();
         pi.setVisible(true);
         
     }//GEN-LAST:event_visitorTrack_navbtnActionPerformed
@@ -125,7 +125,7 @@ public class ResidentAccountsMain extends javax.swing.JFrame {
     private void forum_navbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forum_navbtnActionPerformed
         
         close();
-        FeedbackForumMain pi = new FeedbackForumMain();
+        MFeedbackForumMain pi = new MFeedbackForumMain();
         pi.setVisible(true);
         
     }//GEN-LAST:event_forum_navbtnActionPerformed
@@ -134,7 +134,7 @@ public class ResidentAccountsMain extends javax.swing.JFrame {
     private void paymentTrack_navbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paymentTrack_navbtnActionPerformed
         
         close();
-        BillPayTrackingMain pi = new BillPayTrackingMain();
+        MBillPayTrackingMain pi = new MBillPayTrackingMain();
         pi.setVisible(true);
         
     }//GEN-LAST:event_paymentTrack_navbtnActionPerformed
@@ -163,20 +163,21 @@ public class ResidentAccountsMain extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ResidentAccountsMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MResidentAccountsMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ResidentAccountsMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MResidentAccountsMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ResidentAccountsMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MResidentAccountsMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ResidentAccountsMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MResidentAccountsMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ResidentAccountsMain().setVisible(true);
+                new MResidentAccountsMain().setVisible(true);
             }
         });
     }

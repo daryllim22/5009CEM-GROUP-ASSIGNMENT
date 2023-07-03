@@ -4,6 +4,8 @@
  */
 package pkg5009cem_assignment;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author sjjde
@@ -34,6 +36,10 @@ public class MResidentAccountsMain extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jDesktopPane2 = new javax.swing.JDesktopPane();
+        createNewAcc_btn = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         visitorTrack_navbtn = new javax.swing.JButton();
         forum_navbtn = new javax.swing.JButton();
         paymentTrack_navbtn = new javax.swing.JButton();
@@ -56,15 +62,72 @@ public class MResidentAccountsMain extends javax.swing.JFrame {
         jDesktopPane2.setMaximumSize(new java.awt.Dimension(720, 460));
         jDesktopPane2.setMinimumSize(new java.awt.Dimension(720, 460));
 
+        createNewAcc_btn.setText("+ new accounts");
+        createNewAcc_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createNewAcc_btnActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Resident accounts");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Account ID", "Resident name", "Car plate no.", "Phone no.", "Email"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        jDesktopPane2.setLayer(createNewAcc_btn, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
         jDesktopPane2.setLayout(jDesktopPane2Layout);
         jDesktopPane2Layout.setHorizontalGroup(
             jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
+            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(createNewAcc_btn)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 676, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         jDesktopPane2Layout.setVerticalGroup(
             jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 460, Short.MAX_VALUE)
+            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(createNewAcc_btn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         getContentPane().add(jDesktopPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 37, -1, -1));
@@ -103,7 +166,7 @@ public class MResidentAccountsMain extends javax.swing.JFrame {
                 logout_btnActionPerformed(evt);
             }
         });
-        getContentPane().add(logout_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, -1, -1));
+        getContentPane().add(logout_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, -1, -1));
 
         jLabel1.setText("Resident Accounts");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
@@ -117,6 +180,8 @@ public class MResidentAccountsMain extends javax.swing.JFrame {
         
         close();
         MVisitorTrackingMain pi = new MVisitorTrackingMain();
+        pi.setTitle("Visitor Tracking");
+        pi.setLocationRelativeTo(null);
         pi.setVisible(true);
         
     }//GEN-LAST:event_visitorTrack_navbtnActionPerformed
@@ -126,6 +191,8 @@ public class MResidentAccountsMain extends javax.swing.JFrame {
         
         close();
         MFeedbackForumMain pi = new MFeedbackForumMain();
+        pi.setTitle("Feedback Forum");
+        pi.setLocationRelativeTo(null);
         pi.setVisible(true);
         
     }//GEN-LAST:event_forum_navbtnActionPerformed
@@ -135,6 +202,8 @@ public class MResidentAccountsMain extends javax.swing.JFrame {
         
         close();
         MBillPayTrackingMain pi = new MBillPayTrackingMain();
+        pi.setTitle("Bill Payment Tracking");
+        pi.setLocationRelativeTo(null);
         pi.setVisible(true);
         
     }//GEN-LAST:event_paymentTrack_navbtnActionPerformed
@@ -142,9 +211,33 @@ public class MResidentAccountsMain extends javax.swing.JFrame {
     //when user clicks on the 'logout' button
     private void logout_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout_btnActionPerformed
     
-        // TODO add your handling code here:
+        int res = JOptionPane.showConfirmDialog(logout_btn, "Are you sure you want to sign out?", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (res == JOptionPane.YES_OPTION) {
+                dispose();
+                MainLogin login = new MainLogin();
+                login.setTitle("Main Login Page");
+                login.setLocationRelativeTo(null); //center the form
+                login.setVisible(true);
+            }
+            else {
+                dispose();
+                MResidentAccountsMain pi = new MResidentAccountsMain();
+                pi.setTitle("Resident Accounts");
+                pi.setLocationRelativeTo(null); //center the form
+                pi.setVisible(true);
+            }
         
     }//GEN-LAST:event_logout_btnActionPerformed
+
+    private void createNewAcc_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createNewAcc_btnActionPerformed
+        
+        close();
+        MCreateNewResident pi = new MCreateNewResident();
+        pi.setTitle("Resident Accounts - Create new resident accounts");
+        pi.setLocationRelativeTo(null); //center the form
+        pi.setVisible(true);
+        
+    }//GEN-LAST:event_createNewAcc_btnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,10 +276,14 @@ public class MResidentAccountsMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton createNewAcc_btn;
     private javax.swing.JButton forum_navbtn;
     private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JButton logout_btn;
     private javax.swing.JButton paymentTrack_navbtn;
     private javax.swing.JButton residentAcc_navbtn;

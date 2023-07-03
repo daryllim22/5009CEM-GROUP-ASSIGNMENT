@@ -4,6 +4,8 @@
  */
 package pkg5009cem_assignment;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author sjjde
@@ -47,7 +49,6 @@ public class MBillPayTrackingMain extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(857, 497));
         setMinimumSize(new java.awt.Dimension(857, 497));
-        setPreferredSize(new java.awt.Dimension(857, 497));
         setResizable(false);
 
         jPanel1.setMaximumSize(new java.awt.Dimension(857, 497));
@@ -59,14 +60,12 @@ public class MBillPayTrackingMain extends javax.swing.JFrame {
         jDesktopPane1.setMinimumSize(new java.awt.Dimension(720, 460));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Residents' monthly payment record");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Unit no.", "Maintenance fee", "Sinking fee"
@@ -182,6 +181,8 @@ public class MBillPayTrackingMain extends javax.swing.JFrame {
         
         close();
         MVisitorTrackingMain pi = new MVisitorTrackingMain();
+        pi.setTitle("Visitor Tracking");
+        pi.setLocationRelativeTo(null); //center the form
         pi.setVisible(true);
         
     }//GEN-LAST:event_visitorTrack_navbtnActionPerformed
@@ -191,6 +192,8 @@ public class MBillPayTrackingMain extends javax.swing.JFrame {
         
         close();
         MFeedbackForumMain pi = new MFeedbackForumMain();
+        pi.setTitle("Feedback Forum");
+        pi.setLocationRelativeTo(null); //center the form
         pi.setVisible(true);
         
     }//GEN-LAST:event_forum_navbtnActionPerformed
@@ -200,6 +203,8 @@ public class MBillPayTrackingMain extends javax.swing.JFrame {
     
         close();
         MResidentAccountsMain pi = new MResidentAccountsMain();
+        pi.setTitle("Resident Accounts");
+        pi.setLocationRelativeTo(null); //center the form
         pi.setVisible(true);
         
     }//GEN-LAST:event_residentAcc_navbtnActionPerformed
@@ -207,7 +212,21 @@ public class MBillPayTrackingMain extends javax.swing.JFrame {
     //when user clicks on the 'logout' button
     private void logout_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout_btnActionPerformed
     
-        // TODO add your handling code here:
+        int res = JOptionPane.showConfirmDialog(logout_btn, "Are you sure you want to sign out?", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (res == JOptionPane.YES_OPTION) {
+                dispose();
+                MainLogin login = new MainLogin();
+                login.setTitle("Main Login Page");
+                login.setLocationRelativeTo(null); //center the form
+                login.setVisible(true);
+            }
+            else {
+                dispose();
+                MBillPayTrackingMain pi = new MBillPayTrackingMain();
+                pi.setTitle("Resident Accounts");
+                pi.setLocationRelativeTo(null); //center the form
+                pi.setVisible(true);
+            }
         
     }//GEN-LAST:event_logout_btnActionPerformed
 

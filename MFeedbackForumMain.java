@@ -4,6 +4,15 @@
  */
 package pkg5009cem_assignment;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author sjjde
@@ -15,6 +24,16 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
      */
     public MFeedbackForumMain() {
         initComponents();
+    }
+    
+    //variable declaration
+    private String username;
+    
+    public MFeedbackForumMain(String username){
+       initComponents();
+       this.username = username;
+       
+       displayDiscussions();
     }
     
     
@@ -37,7 +56,7 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
         newDis_btn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        mForumDis_table = new javax.swing.JTable();
         visitorTrack_navbtn = new javax.swing.JButton();
         forum_navbtn = new javax.swing.JButton();
         paymentTrack_navbtn = new javax.swing.JButton();
@@ -57,25 +76,27 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
 
         jDesktopPane1.setMaximumSize(new java.awt.Dimension(720, 460));
         jDesktopPane1.setMinimumSize(new java.awt.Dimension(720, 460));
-        jDesktopPane1.setPreferredSize(new java.awt.Dimension(720, 460));
         jDesktopPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         newDis_btn.setText("+ new discussion");
+        newDis_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newDis_btnActionPerformed(evt);
+            }
+        });
         jDesktopPane1.add(newDis_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Discussions: Management Forum");
         jDesktopPane1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        mForumDis_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+
             },
             new String [] {
-                ""
+                "Discussions"
             }
         ) {
             Class[] types = new Class [] {
@@ -86,11 +107,11 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(mForumDis_table);
 
         jDesktopPane1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 680, 340));
 
-        jPanel1.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, -1, -1));
+        jPanel1.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 720, 460));
 
         visitorTrack_navbtn.setText("Visitor Tracking");
         visitorTrack_navbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -154,6 +175,8 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
         
         close();
         MVisitorTrackingMain pi = new MVisitorTrackingMain();
+        pi.setTitle("Visitor Tracking");
+        pi.setLocationRelativeTo(null); //center the form
         pi.setVisible(true);
         
     }//GEN-LAST:event_visitorTrack_navbtnActionPerformed
@@ -163,6 +186,8 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
     
         close();
         MBillPayTrackingMain pi = new MBillPayTrackingMain();
+        pi.setTitle("Bill Payment Tracking");
+        pi.setLocationRelativeTo(null); //center the form
         pi.setVisible(true);
         
     }//GEN-LAST:event_paymentTrack_navbtnActionPerformed
@@ -172,6 +197,8 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
     
         close();
         MResidentAccountsMain pi = new MResidentAccountsMain();
+        pi.setTitle("Resident Accounts");
+        pi.setLocationRelativeTo(null); //center the form
         pi.setVisible(true);
         
     }//GEN-LAST:event_residentAcc_navbtnActionPerformed
@@ -179,10 +206,37 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
     //when user clicks on the 'logout' button
     private void logout_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout_btnActionPerformed
     
-        // TODO add your handling code here:
+        int res = JOptionPane.showConfirmDialog(logout_btn, "Are you sure you want to sign out?", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (res == JOptionPane.YES_OPTION) {
+                dispose();
+                MainLogin login = new MainLogin();
+                login.setTitle("Main Login Page");
+                login.setLocationRelativeTo(null); //center the form
+                login.setVisible(true);
+            }
+            else {
+                dispose();
+                MFeedbackForumMain pi = new MFeedbackForumMain();
+                pi.setTitle("Resident Accounts");
+                pi.setLocationRelativeTo(null); //center the form
+                pi.setVisible(true);
+            }
         
     }//GEN-LAST:event_logout_btnActionPerformed
 
+    
+    //when user clicks on '+ new discussion' to open the new discussion page
+    private void newDis_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newDis_btnActionPerformed
+        
+        close();
+        MNewDis pi = new MNewDis(username);
+        pi.setTitle("New management forum discussion");
+        pi.setLocationRelativeTo(null); //center the form
+        pi.setVisible(true);
+        
+    }//GEN-LAST:event_newDis_btnActionPerformed
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -218,6 +272,44 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
             }
         });
     }
+    
+    
+    
+    //display discussions
+    private void displayDiscussions() {
+        
+        Connection conn = ConnectDB.connectDB();
+        if (conn != null) {
+            try {
+                //Statement st = conn.createStatement();
+                PreparedStatement pst = (PreparedStatement) conn.prepareStatement("SELECT * FROM manager_forum WHERE title = ?");
+                //pst.setString(1, "title"); //telling the system to query for data inside "title"
+                
+                ResultSet rs = pst.executeQuery();
+                
+                while (rs.next()) {
+                    
+                    String disTitle = rs.getString("title");
+                    
+                    Object[] disRowData = {disTitle};
+                    DefaultTableModel disTableModel = (DefaultTableModel) mForumDis_table.getModel();
+                    //mForumDis_table.setModel(disTableModel);
+
+                    disTableModel.addRow(disRowData);
+                    
+                    
+                }
+                rs.close();
+                pst.close();
+                conn.close();
+            } catch (SQLException ex) {
+                 Logger.getLogger(RD.class.getName()).log(Level.SEVERE, null, ex);
+             }
+        }
+        
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton forum_navbtn;
@@ -226,8 +318,8 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton logout_btn;
+    private javax.swing.JTable mForumDis_table;
     private javax.swing.JButton newDis_btn;
     private javax.swing.JButton paymentTrack_navbtn;
     private javax.swing.JButton residentAcc_navbtn;

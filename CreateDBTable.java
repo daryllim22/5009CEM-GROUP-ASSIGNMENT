@@ -162,7 +162,7 @@ public class CreateDBTable {
             if (resultSet.next()) {
                 System.out.println("billpayment Table already exists.");
             } else {
-                PreparedStatement create = conn.prepareStatement("CREATE TABLE billpayment(id int NOT NULL AUTO_INCREMENT,unitnumber varchar(255),resident_name varchar(255),payment_method varchar(255),payment_type varchar(255),card_no varchar(255),amount varchar(255), PRIMARY KEY(id))");
+                PreparedStatement create = conn.prepareStatement("CREATE TABLE billpayment(id int NOT NULL AUTO_INCREMENT,unitnumber varchar(255),resident_name varchar(255),date varchar(255),payment_method varchar(255),payment_type varchar(255),card_no varchar(255),amount varchar(255), PRIMARY KEY(id))");
                 create.executeUpdate();
                 System.out.println("billpayment Table created.");
             }

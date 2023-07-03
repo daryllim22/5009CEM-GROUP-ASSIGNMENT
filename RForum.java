@@ -1,6 +1,10 @@
 package apartment.management.system;
 
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -18,6 +22,7 @@ public class RForum extends javax.swing.JFrame {
      */
     public RForum() {
         initComponents();
+        getRForum();
     }
     
     private String unitnumber;
@@ -27,6 +32,7 @@ public class RForum extends javax.swing.JFrame {
        initComponents();
        this.unitnumber = unitnumber;
        this.residentName = residentName;
+       getRForum();
        
     }
 
@@ -51,6 +57,8 @@ dispose();
         jDesktopPane2 = new javax.swing.JDesktopPane();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -105,8 +113,19 @@ dispose();
             }
         });
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title", "Problem"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
         jDesktopPane2.setLayer(jButton7, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jButton8, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
         jDesktopPane2.setLayout(jDesktopPane2Layout);
@@ -115,17 +134,22 @@ dispose();
             .addGroup(jDesktopPane2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton7)
-                    .addComponent(jButton8))
-                .addContainerGap(324, Short.MAX_VALUE))
+                    .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                        .addComponent(jButton7)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton8))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jDesktopPane2Layout.setVerticalGroup(
             jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton7)
-                .addGap(27, 27, 27)
-                .addComponent(jButton8)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton7)
+                    .addComponent(jButton8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -168,7 +192,7 @@ dispose();
                         .addComponent(jButton3)
                         .addGap(18, 18, 18)
                         .addComponent(jButton5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 208, Short.MAX_VALUE)
                         .addComponent(jButton6))
                     .addComponent(jDesktopPane2))
                 .addContainerGap())
@@ -187,7 +211,7 @@ dispose();
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         close();
-        BillPay pi = new BillPay ();
+        BillPay pi = new BillPay (unitnumber,residentName);
         pi.setTitle("Bill Payment");
         pi.setLocationRelativeTo(null);
         pi.setVisible(true);        // TODO add your handling code here:
@@ -203,7 +227,7 @@ dispose();
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         close();
-        NewM pi = new NewM ();
+        NewM pi = new NewM (unitnumber,residentName);
         pi.setTitle("New Message");
         pi.setLocationRelativeTo(null);
         pi.setVisible(true);        // TODO add your handling code here:
@@ -277,6 +301,40 @@ dispose();
             }
         });
     }
+    
+    private void getRForum(){
+        Connection conn = ConnectDB.connectDB();
+        if (conn != null) {
+        try {
+            String query = "SELECT title,text FROM resident_forum WHERE unitnumber = ?";
+            
+            PreparedStatement pst = conn.prepareStatement(query);
+            
+            pst.setString(1,unitnumber);
+            
+            ResultSet rs = pst.executeQuery();
+            
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
+            
+            while (rs.next()) {
+            String title = rs.getString("title");
+            String text = rs.getString("text");
+
+
+            // Add the data to the table
+            model.addRow(new Object[]{title,text});
+        }
+        rs.close();
+        pst.close();
+        conn.close();
+            
+        }   catch (SQLException ex) {
+                Logger.getLogger(BillPay.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+    }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -288,5 +346,7 @@ dispose();
     private javax.swing.JButton jButton8;
     private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

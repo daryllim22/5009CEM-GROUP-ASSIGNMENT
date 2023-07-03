@@ -259,7 +259,7 @@ dispose();
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         close();
-        BillPay pi = new BillPay ();
+        BillPay pi = new BillPay (unitnumber,residentName);
         pi.setTitle("Bill Payment");
         pi.setLocationRelativeTo(null);
         pi.setVisible(true);        // TODO add your handling code here:
@@ -275,7 +275,7 @@ dispose();
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         close();
-        NewM pi = new NewM ();
+        NewM pi = new NewM (unitnumber,residentName);
         pi.setTitle("New Message");
         pi.setLocationRelativeTo(null);
         pi.setVisible(true);        // TODO add your handling code here:

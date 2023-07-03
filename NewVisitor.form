@@ -154,33 +154,21 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="Dname1">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Dname1ActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="Dname2">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Dname2ActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="Dname3">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Dname3ActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="Dname5">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Dname5ActionPerformed"/>
           </Events>
@@ -222,9 +210,6 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="Dname6">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Dname6ActionPerformed"/>
           </Events>

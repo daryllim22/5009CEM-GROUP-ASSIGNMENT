@@ -4,7 +4,14 @@
  */
 package pkg5009cem_assignment;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,6 +24,16 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
      */
     public MFeedbackForumMain() {
         initComponents();
+    }
+    
+    //variable declaration
+    private String username;
+    
+    public MFeedbackForumMain(String username){
+       initComponents();
+       this.username = username;
+       
+       displayDiscussions();
     }
     
     
@@ -59,10 +76,14 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
 
         jDesktopPane1.setMaximumSize(new java.awt.Dimension(720, 460));
         jDesktopPane1.setMinimumSize(new java.awt.Dimension(720, 460));
-        jDesktopPane1.setPreferredSize(new java.awt.Dimension(720, 460));
         jDesktopPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         newDis_btn.setText("+ new discussion");
+        newDis_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newDis_btnActionPerformed(evt);
+            }
+        });
         jDesktopPane1.add(newDis_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -75,7 +96,7 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
 
             },
             new String [] {
-                ""
+                "Discussions"
             }
         ) {
             Class[] types = new Class [] {
@@ -90,7 +111,7 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
 
         jDesktopPane1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 680, 340));
 
-        jPanel1.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, -1, -1));
+        jPanel1.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 720, 460));
 
         visitorTrack_navbtn.setText("Visitor Tracking");
         visitorTrack_navbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -203,6 +224,19 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
         
     }//GEN-LAST:event_logout_btnActionPerformed
 
+    
+    //when user clicks on '+ new discussion' to open the new discussion page
+    private void newDis_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newDis_btnActionPerformed
+        
+        close();
+        MNewDis pi = new MNewDis(username);
+        pi.setTitle("New management forum discussion");
+        pi.setLocationRelativeTo(null); //center the form
+        pi.setVisible(true);
+        
+    }//GEN-LAST:event_newDis_btnActionPerformed
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -238,6 +272,44 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
             }
         });
     }
+    
+    
+    
+    //display discussions
+    private void displayDiscussions() {
+        
+        Connection conn = ConnectDB.connectDB();
+        if (conn != null) {
+            try {
+                //Statement st = conn.createStatement();
+                PreparedStatement pst = (PreparedStatement) conn.prepareStatement("SELECT * FROM manager_forum WHERE title = ?");
+                //pst.setString(1, "title"); //telling the system to query for data inside "title"
+                
+                ResultSet rs = pst.executeQuery();
+                
+                while (rs.next()) {
+                    
+                    String disTitle = rs.getString("title");
+                    
+                    Object[] disRowData = {disTitle};
+                    DefaultTableModel disTableModel = (DefaultTableModel) mForumDis_table.getModel();
+                    //mForumDis_table.setModel(disTableModel);
+
+                    disTableModel.addRow(disRowData);
+                    
+                    
+                }
+                rs.close();
+                pst.close();
+                conn.close();
+            } catch (SQLException ex) {
+                 Logger.getLogger(RD.class.getName()).log(Level.SEVERE, null, ex);
+             }
+        }
+        
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton forum_navbtn;

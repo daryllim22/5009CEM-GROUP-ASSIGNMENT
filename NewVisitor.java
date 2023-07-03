@@ -80,28 +80,24 @@ public class NewVisitor extends javax.swing.JFrame {
 
         jLabel6.setText("Name:");
 
-        Dname1.setEditable(false);
         Dname1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Dname1ActionPerformed(evt);
             }
         });
 
-        Dname2.setEditable(false);
         Dname2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Dname2ActionPerformed(evt);
             }
         });
 
-        Dname3.setEditable(false);
         Dname3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Dname3ActionPerformed(evt);
             }
         });
 
-        Dname5.setEditable(false);
         Dname5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Dname5ActionPerformed(evt);
@@ -130,7 +126,6 @@ public class NewVisitor extends javax.swing.JFrame {
             }
         });
 
-        Dname6.setEditable(false);
         Dname6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Dname6ActionPerformed(evt);
@@ -253,10 +248,10 @@ public class NewVisitor extends javax.swing.JFrame {
                 login.setVisible(true);
             }else{
                 dispose();
-                VisitorTracking vt = new VisitorTracking(unitnumber, visitorName);
-                vt.setTitle("Visitor Tracking");
-                vt.setLocationRelativeTo(null); //center the form
-                vt.setVisible(true);
+                NewVisitor nv = new NewVisitor(unitnumber, visitorName);
+                nv.setTitle("Visitor Tracking");
+                nv.setLocationRelativeTo(null); //center the form
+                nv.setVisible(true);
             }        
             
         
@@ -272,18 +267,14 @@ public class NewVisitor extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         close();
-        NewVisitor pi = new NewVisitor (unitnumber, visitorName);
-        pi.setTitle("Back");
+        SecurityMain pi = new SecurityMain (unitnumber, visitorName);
+        pi.setTitle("Security Main");
         pi.setLocationRelativeTo(null);
-        pi.setVisible(true);         // TODO add your handling code here:
+        pi.setVisible(true); // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        close();
-        NewVisitor pi = new NewVisitor (unitnumber, visitorName);
-        pi.setTitle("OK");
-        pi.setLocationRelativeTo(null);
-        pi.setVisible(true); // TODO add your handling code here:
+        updateVisitorDetails(); // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void Dname1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dname1ActionPerformed
@@ -340,6 +331,79 @@ public class NewVisitor extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void getVisitorTracking() {
+        Connection conn = ConnectDB.connectDB();
+        if (conn != null) {
+            try {
+                //Statement st = conn.createStatement();
+                PreparedStatement pst = (PreparedStatement) conn.prepareStatement("SELECT * FROM visitor WHERE unit_number = ?");
+                pst.setString(1, unitnumber);
+                
+                ResultSet rs = pst.executeQuery();
+                
+                if (rs.next()) {
+                    Dname5.setText(rs.getString("visitor_name"));
+                    Dname1.setText(rs.getString("car_plate_no"));
+                    Dname2.setText(rs.getString("reason_for_visit"));
+                    Dname3.setText(rs.getString("date"));
+                    Dname6.setText(rs.getString("time_in"));
+                }
+                rs.close();
+                pst.close();
+                conn.close();
+            } catch (SQLException ex) {
+                 Logger.getLogger(NewVisitor.class.getName()).log(Level.SEVERE, null, ex);
+             }
+        }
+    }
+    
+    private void updateVisitorDetails() {
+    Connection conn = ConnectDB.connectDB();
+    if (conn != null) {
+        try {
+            String name = Dname5.getText();
+            String carPlateNo = Dname1.getText();
+            String reasonForVisit = Dname2.getText();
+            String date = Dname3.getText();
+            String timeIn = Dname6.getText();
+            
+
+            // Prepare the update query
+            String updateQuery = "UPDATE resident SET resident_name=?, car_plate_no=?, email=?, telefon_number=? WHERE unit_number=?";
+
+            PreparedStatement pst = conn.prepareStatement(updateQuery);
+            pst.setString(1, name);
+            pst.setString(2, carPlateNo);
+            pst.setString(3, reasonForVisit);
+            pst.setString(4, date);
+            pst.setString(5, timeIn);
+
+            // Execute the update query
+            int rs = pst.executeUpdate();
+            if (rs > 0) {
+                JOptionPane.showMessageDialog(this, "Visitor details updated successfully!", "Update Successful", JOptionPane.INFORMATION_MESSAGE);
+                this.dispose();
+                NewVisitor nv = new NewVisitor(unitnumber, visitorName);
+                nv.setTitle("Visitor Details");
+                nv.setLocationRelativeTo(null);
+                nv.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "Failed to update visitor details.", "Update Failed", JOptionPane.ERROR_MESSAGE);
+                this.dispose();
+                MainLogin login = new MainLogin();
+                login.setTitle("Main Login Page");
+                login.setLocationRelativeTo(null); //center the form
+                login.setVisible(true);
+            }
+            
+            pst.close();
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(NewVisitor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Dname1;

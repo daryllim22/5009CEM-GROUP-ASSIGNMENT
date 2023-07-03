@@ -152,6 +152,23 @@ public class CreateDBTable {
             } catch (Exception e) {
             System.out.println(e);
         }
+        
+        //Payment Table
+        try {
+            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+             PreparedStatement checkTable = conn.prepareStatement("SHOW TABLES LIKE 'payment'");
+            ResultSet resultSet = checkTable.executeQuery();
+
+            if (resultSet.next()) {
+                System.out.println("billpayment Table already exists.");
+            } else {
+                PreparedStatement create = conn.prepareStatement("CREATE TABLE billpayment(id int NOT NULL AUTO_INCREMENT,unitnumber varchar(255),resident_name varchar(255),payment_method varchar(255),payment_type varchar(255),card_no varchar(255),amount varchar(255), PRIMARY KEY(id))");
+                create.executeUpdate();
+                System.out.println("billpayment Table created.");
+            }
+            } catch (Exception e) {
+            System.out.println(e);
+        }
     }  
 }
 

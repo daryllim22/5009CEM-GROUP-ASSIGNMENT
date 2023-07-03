@@ -24,13 +24,13 @@ public class SecurityMain extends javax.swing.JFrame {
     }
     
     private String unitnumber;
-    private String residentName;
+    private String visitorName;
     
-    public RD(String unitnumber, String residentName) {
+    public SecurityMain(String unitnumber, String visitorName) {
        initComponents();
        this.unitnumber = unitnumber;
-       this.residentName = residentName;
-       getResidentInfo();
+       this.visitorName = visitorName;
+       getVisitorInfo();
        
     }
     
@@ -49,6 +49,40 @@ dispose();
 
         jButton1 = new javax.swing.JButton();
         jToggleButton1 = new javax.swing.JToggleButton();
+        jDesktopPane2 = new javax.swing.JDesktopPane();
+        jLabel8 = new javax.swing.JLabel();
+        Dname1 = new javax.swing.JTextField();
+        Dname2 = new javax.swing.JTextField();
+        Dname3 = new javax.swing.JTextField();
+        Dname5 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
+        Dname6 = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        Dname7 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        Dname8 = new javax.swing.JTextField();
+        Dname9 = new javax.swing.JTextField();
+        Dname4 = new javax.swing.JTextField();
+        Dname10 = new javax.swing.JTextField();
+        Dname11 = new javax.swing.JTextField();
+        Dname12 = new javax.swing.JTextField();
+        Dname13 = new javax.swing.JTextField();
+        Dname14 = new javax.swing.JTextField();
+        Dname15 = new javax.swing.JTextField();
+        Dname16 = new javax.swing.JTextField();
+        Dname17 = new javax.swing.JTextField();
+        Dname18 = new javax.swing.JTextField();
+        Dname19 = new javax.swing.JTextField();
+        Dname20 = new javax.swing.JTextField();
+        Dname21 = new javax.swing.JTextField();
+        Dname22 = new javax.swing.JTextField();
+        Dname23 = new javax.swing.JTextField();
+        Dname24 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,34 +94,558 @@ dispose();
         });
 
         jToggleButton1.setText("Logout");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Name");
+
+        Dname1.setEditable(false);
+        Dname1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Dname1ActionPerformed(evt);
+            }
+        });
+
+        Dname2.setEditable(false);
+        Dname2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Dname2ActionPerformed(evt);
+            }
+        });
+
+        Dname3.setEditable(false);
+        Dname3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Dname3ActionPerformed(evt);
+            }
+        });
+
+        Dname5.setEditable(false);
+        Dname5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Dname5ActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("Car Plate No");
+
+        jLabel10.setText("Reason for visit");
+
+        jLabel11.setText("Date");
+
+        jLabel12.setText("Time In");
+
+        jButton6.setText("OK");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        Dname6.setEditable(false);
+        Dname6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Dname6ActionPerformed(evt);
+            }
+        });
+
+        jLabel13.setText("Time Out");
+
+        Dname7.setEditable(false);
+        Dname7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Dname7ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("+ New Visitor");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Currently Visiting");
+
+        Dname8.setEditable(false);
+        Dname8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Dname8ActionPerformed(evt);
+            }
+        });
+
+        Dname9.setEditable(false);
+        Dname9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Dname9ActionPerformed(evt);
+            }
+        });
+
+        Dname4.setEditable(false);
+        Dname4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Dname4ActionPerformed(evt);
+            }
+        });
+
+        Dname10.setEditable(false);
+        Dname10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Dname10ActionPerformed(evt);
+            }
+        });
+
+        Dname11.setEditable(false);
+        Dname11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Dname11ActionPerformed(evt);
+            }
+        });
+
+        Dname12.setEditable(false);
+        Dname12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Dname12ActionPerformed(evt);
+            }
+        });
+
+        Dname13.setEditable(false);
+        Dname13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Dname13ActionPerformed(evt);
+            }
+        });
+
+        Dname14.setEditable(false);
+        Dname14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Dname14ActionPerformed(evt);
+            }
+        });
+
+        Dname15.setEditable(false);
+        Dname15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Dname15ActionPerformed(evt);
+            }
+        });
+
+        Dname16.setEditable(false);
+        Dname16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Dname16ActionPerformed(evt);
+            }
+        });
+
+        Dname17.setEditable(false);
+        Dname17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Dname17ActionPerformed(evt);
+            }
+        });
+
+        Dname18.setEditable(false);
+        Dname18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Dname18ActionPerformed(evt);
+            }
+        });
+
+        Dname19.setEditable(false);
+        Dname19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Dname19ActionPerformed(evt);
+            }
+        });
+
+        Dname20.setEditable(false);
+        Dname20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Dname20ActionPerformed(evt);
+            }
+        });
+
+        Dname21.setEditable(false);
+        Dname21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Dname21ActionPerformed(evt);
+            }
+        });
+
+        Dname22.setEditable(false);
+        Dname22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Dname22ActionPerformed(evt);
+            }
+        });
+
+        Dname23.setEditable(false);
+        Dname23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Dname23ActionPerformed(evt);
+            }
+        });
+
+        Dname24.setEditable(false);
+        Dname24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Dname24ActionPerformed(evt);
+            }
+        });
+
+        jDesktopPane2.setLayer(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(Dname1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(Dname2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(Dname3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(Dname5, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jLabel9, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jLabel10, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jLabel11, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jLabel12, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jButton6, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(Dname6, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jLabel13, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(Dname7, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(Dname8, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(Dname9, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(Dname4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(Dname10, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(Dname11, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(Dname12, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(Dname13, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(Dname14, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(Dname15, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(Dname16, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(Dname17, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(Dname18, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(Dname19, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(Dname20, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(Dname21, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(Dname22, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(Dname23, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(Dname24, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
+        jDesktopPane2.setLayout(jDesktopPane2Layout);
+        jDesktopPane2Layout.setHorizontalGroup(
+            jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                        .addComponent(Dname13, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Dname15, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23)
+                        .addComponent(Dname16, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Dname17, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(Dname18, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Dname14, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                        .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jButton6))
+                            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                                        .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(75, 75, 75)
+                                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                .addComponent(Dname5, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(Dname1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(23, 23, 23)))
+                                        .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                                                .addComponent(Dname2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(Dname3, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE))
+                                            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(11, 11, 11)
+                                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                                                .addComponent(Dname6, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(Dname7, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                                        .addComponent(Dname8, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(Dname4, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(Dname10, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(Dname11, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(Dname12, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(Dname9, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(6, 6, 6)))
+                        .addGap(46, 46, 46))
+                    .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                                .addComponent(Dname19, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Dname21, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20)
+                                .addComponent(Dname22, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(Dname24, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(Dname23, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Dname20, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+        );
+        jDesktopPane2Layout.setVerticalGroup(
+            jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel13))
+                .addGap(18, 18, 18)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Dname5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Dname1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Dname2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Dname3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Dname6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Dname7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Dname8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Dname4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Dname10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Dname11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Dname12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Dname9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Dname13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Dname15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Dname16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Dname17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Dname18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Dname14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Dname19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Dname21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Dname22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Dname23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Dname24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Dname20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addComponent(jButton6))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addContainerGap(465, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1)
+                    .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(119, Short.MAX_VALUE)
+                .addComponent(jDesktopPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(77, 77, 77))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(53, 53, 53)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(39, 39, 39)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
+                .addGap(38, 38, 38)
+                .addComponent(jDesktopPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
                 .addComponent(jToggleButton1)
-                .addGap(70, 70, 70))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        close();
+        NewVisitor pi = new NewVisitor (unitnumber, visitorName);
+        pi.setTitle("Visitor Tracking");
+        pi.setLocationRelativeTo(null);
+        pi.setVisible(true); // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        int res =  JOptionPane.showConfirmDialog(jToggleButton1, "Are you sure you want to sign out?", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            // JOptionPane.setRootFrame(null);
+            if (res == JOptionPane.YES_OPTION) {
+                dispose();
+                MainLogin login = new MainLogin();
+                login.setTitle("Main Login Page");
+                login.setLocationRelativeTo(null); //center the form
+                login.setVisible(true);
+            }else{
+                dispose();
+                VisitorTracking vt = new VisitorTracking(unitnumber, visitorName);
+                vt.setTitle("Visitor Tracking");
+                vt.setLocationRelativeTo(null); //center the form
+                vt.setVisible(true);
+            }            // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        close();
+        NewVisitor pi = new NewVisitor (unitnumber, visitorName);
+        pi.setTitle("New Visitor");
+        pi.setLocationRelativeTo(null);
+        pi.setVisible(true); // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void Dname1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dname1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Dname1ActionPerformed
+
+    private void Dname2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dname2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Dname2ActionPerformed
+
+    private void Dname3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dname3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Dname3ActionPerformed
+
+    private void Dname5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dname5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Dname5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        close();
+        NewVisitor pi = new NewVisitor (unitnumber, visitorName);
+        pi.setTitle("OK");
+        pi.setLocationRelativeTo(null);
+        pi.setVisible(true); // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void Dname6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dname6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Dname6ActionPerformed
+
+    private void Dname7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dname7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Dname7ActionPerformed
+
+    private void Dname8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dname8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Dname8ActionPerformed
+
+    private void Dname9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dname9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Dname9ActionPerformed
+
+    private void Dname4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dname4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Dname4ActionPerformed
+
+    private void Dname10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dname10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Dname10ActionPerformed
+
+    private void Dname11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dname11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Dname11ActionPerformed
+
+    private void Dname12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dname12ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Dname12ActionPerformed
+
+    private void Dname13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dname13ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Dname13ActionPerformed
+
+    private void Dname14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dname14ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Dname14ActionPerformed
+
+    private void Dname15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dname15ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Dname15ActionPerformed
+
+    private void Dname16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dname16ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Dname16ActionPerformed
+
+    private void Dname17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dname17ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Dname17ActionPerformed
+
+    private void Dname18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dname18ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Dname18ActionPerformed
+
+    private void Dname19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dname19ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Dname19ActionPerformed
+
+    private void Dname20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dname20ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Dname20ActionPerformed
+
+    private void Dname21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dname21ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Dname21ActionPerformed
+
+    private void Dname22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dname22ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Dname22ActionPerformed
+
+    private void Dname23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dname23ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Dname23ActionPerformed
+
+    private void Dname24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dname24ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Dname24ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,7 +683,41 @@ dispose();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Dname1;
+    private javax.swing.JTextField Dname10;
+    private javax.swing.JTextField Dname11;
+    private javax.swing.JTextField Dname12;
+    private javax.swing.JTextField Dname13;
+    private javax.swing.JTextField Dname14;
+    private javax.swing.JTextField Dname15;
+    private javax.swing.JTextField Dname16;
+    private javax.swing.JTextField Dname17;
+    private javax.swing.JTextField Dname18;
+    private javax.swing.JTextField Dname19;
+    private javax.swing.JTextField Dname2;
+    private javax.swing.JTextField Dname20;
+    private javax.swing.JTextField Dname21;
+    private javax.swing.JTextField Dname22;
+    private javax.swing.JTextField Dname23;
+    private javax.swing.JTextField Dname24;
+    private javax.swing.JTextField Dname3;
+    private javax.swing.JTextField Dname4;
+    private javax.swing.JTextField Dname5;
+    private javax.swing.JTextField Dname6;
+    private javax.swing.JTextField Dname7;
+    private javax.swing.JTextField Dname8;
+    private javax.swing.JTextField Dname9;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JDesktopPane jDesktopPane2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }

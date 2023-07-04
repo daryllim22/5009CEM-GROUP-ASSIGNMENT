@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package apartment.management.system;
+package pkg5009cem_assignment;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -108,6 +110,23 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        //making the table row clickable
+        mForumDis_table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if(!e.getValueIsAdjusting()) {
+                    int selected = mForumDis_table.getSelectedRow();
+
+                    if (selected != -1) {
+                        String discussion = (String) mForumDis_table.getValueAt(selected,0);
+
+                        close();
+                        MOngoingDis pi = new MOngoingDis(discussion);
+                        pi.setVisible(true);
+                    }
+                }
+            }
+        });
         jScrollPane1.setViewportView(mForumDis_table);
 
         jDesktopPane1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 680, 340));
@@ -175,7 +194,7 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
     private void visitorTrack_navbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitorTrack_navbtnActionPerformed
         
         close();
-        MVisitorTrackingMain pi = new MVisitorTrackingMain(username);
+        MVisitorTrackingMain pi = new MVisitorTrackingMain();
         pi.setTitle("Visitor Tracking");
         pi.setLocationRelativeTo(null); //center the form
         pi.setVisible(true);
@@ -186,7 +205,7 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
     private void paymentTrack_navbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paymentTrack_navbtnActionPerformed
     
         close();
-        MBillPayTrackingMain pi = new MBillPayTrackingMain(username);
+        MBillPayTrackingMain pi = new MBillPayTrackingMain();
         pi.setTitle("Bill Payment Tracking");
         pi.setLocationRelativeTo(null); //center the form
         pi.setVisible(true);
@@ -197,7 +216,7 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
     private void residentAcc_navbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residentAcc_navbtnActionPerformed
     
         close();
-        MResidentAccountsMain pi = new MResidentAccountsMain(username);
+        MResidentAccountsMain pi = new MResidentAccountsMain();
         pi.setTitle("Resident Accounts");
         pi.setLocationRelativeTo(null); //center the form
         pi.setVisible(true);
@@ -217,7 +236,7 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
             }
             else {
                 dispose();
-                MFeedbackForumMain pi = new MFeedbackForumMain(username);
+                MFeedbackForumMain pi = new MFeedbackForumMain();
                 pi.setTitle("Resident Accounts");
                 pi.setLocationRelativeTo(null); //center the form
                 pi.setVisible(true);
@@ -236,6 +255,7 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
         pi.setVisible(true);
         
     }//GEN-LAST:event_newDis_btnActionPerformed
+    
     
     
     /**
@@ -276,6 +296,10 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
     
     
     
+    //sini sini
+    
+    
+    
     //display discussions
     private void displayDiscussions() {
         
@@ -283,7 +307,7 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
         if (conn != null) {
             try {
                 //Statement st = conn.createStatement();
-                PreparedStatement pst = (PreparedStatement) conn.prepareStatement("SELECT * FROM manager_forum ");
+                PreparedStatement pst = (PreparedStatement) conn.prepareStatement("SELECT * FROM manager_forum");
                 //pst.setString(1, "title"); //telling the system to query for data inside "title"
                 
                 ResultSet rs = pst.executeQuery();
@@ -293,11 +317,11 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
                 
                 while (rs.next()) {
                     
-                    String title = rs.getString("title");
-                    
-                    model.addRow(new Object[]{title});
-                    
-                    
+                    String disTitle = rs.getString("title");
+
+                    //add data to the table
+                    model.addRow(new Object[]{disTitle});
+ 
                 }
                 rs.close();
                 pst.close();

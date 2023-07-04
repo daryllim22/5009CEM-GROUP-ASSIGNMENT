@@ -27,7 +27,7 @@ public class MVisitorTrackingMain extends javax.swing.JFrame {
     }
     
     //variable declaration
-    private String month;
+    private int month;
     
     //close entire UI page when navbtn clicked
     public void close() {
@@ -322,7 +322,7 @@ public class MVisitorTrackingMain extends javax.swing.JFrame {
     //when user views January's records
     private void trackedVisitorsJan_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trackedVisitorsJan_btnActionPerformed
         
-        month = "January";
+        month = 1;
         getVisitors(month);
         
     }//GEN-LAST:event_trackedVisitorsJan_btnActionPerformed
@@ -330,7 +330,7 @@ public class MVisitorTrackingMain extends javax.swing.JFrame {
     //when user views February's records
     private void trackedVisitorsFeb_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trackedVisitorsFeb_btnActionPerformed
         
-        month = "February";
+        month = 2;
         getVisitors(month);
         
     }//GEN-LAST:event_trackedVisitorsFeb_btnActionPerformed
@@ -338,7 +338,7 @@ public class MVisitorTrackingMain extends javax.swing.JFrame {
     //when user views March's records
     private void trackedVisitorsMar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trackedVisitorsMar_btnActionPerformed
         
-        month = "March";
+        month = 3;
         getVisitors(month);
         
     }//GEN-LAST:event_trackedVisitorsMar_btnActionPerformed
@@ -346,7 +346,7 @@ public class MVisitorTrackingMain extends javax.swing.JFrame {
     //when user views April's records
     private void trackedVisitorsApr_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trackedVisitorsApr_btnActionPerformed
         
-        month = "April";
+        month = 4;
         getVisitors(month);
         
     }//GEN-LAST:event_trackedVisitorsApr_btnActionPerformed
@@ -354,7 +354,7 @@ public class MVisitorTrackingMain extends javax.swing.JFrame {
     //when user views May's records
     private void trackedVisitorsMay_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trackedVisitorsMay_btnActionPerformed
         
-        month = "May";
+        month = 5;
         getVisitors(month);
         
     }//GEN-LAST:event_trackedVisitorsMay_btnActionPerformed
@@ -362,7 +362,7 @@ public class MVisitorTrackingMain extends javax.swing.JFrame {
     //when user views June's records
     private void trackedVisitorsJun_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trackedVisitorsJun_btnActionPerformed
         
-        month = "June";
+        month = 6;
         getVisitors(month);
         
     }//GEN-LAST:event_trackedVisitorsJun_btnActionPerformed
@@ -370,7 +370,7 @@ public class MVisitorTrackingMain extends javax.swing.JFrame {
     //when user views July's records
     private void trackedVisitorsJul_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trackedVisitorsJul_btnActionPerformed
         
-        month = "July";
+        month = 7;
         getVisitors(month);
         
     }//GEN-LAST:event_trackedVisitorsJul_btnActionPerformed
@@ -378,7 +378,7 @@ public class MVisitorTrackingMain extends javax.swing.JFrame {
     //when user views August's records
     private void trackedVisitorsAug_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trackedVisitorsAug_btnActionPerformed
         
-        month = "August";
+        month = 8;
         getVisitors(month);
         
     }//GEN-LAST:event_trackedVisitorsAug_btnActionPerformed
@@ -386,7 +386,7 @@ public class MVisitorTrackingMain extends javax.swing.JFrame {
     //when user views September's records
     private void trackedVisitorsSep_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trackedVisitorsSep_btnActionPerformed
         
-        month = "September";
+        month = 9;
         getVisitors(month);
         
     }//GEN-LAST:event_trackedVisitorsSep_btnActionPerformed
@@ -394,7 +394,7 @@ public class MVisitorTrackingMain extends javax.swing.JFrame {
     //when user views October's records
     private void trackedVisitorsOct_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trackedVisitorsOct_btnActionPerformed
         
-        month = "October";
+        month = 10;
         getVisitors(month);
         
     }//GEN-LAST:event_trackedVisitorsOct_btnActionPerformed
@@ -402,7 +402,7 @@ public class MVisitorTrackingMain extends javax.swing.JFrame {
     //when user views November's records
     private void trackedVisitorsNov_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trackedVisitorsNov_btnActionPerformed
         
-        month = "November";
+        month = 11;
         getVisitors(month);
         
     }//GEN-LAST:event_trackedVisitorsNov_btnActionPerformed
@@ -410,7 +410,7 @@ public class MVisitorTrackingMain extends javax.swing.JFrame {
     //when user views December's records
     private void trackedVisitorsDec_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trackedVisitorsDec_btnActionPerformed
         
-        month = "December";
+        month = 12;
         getVisitors(month);
         
     }//GEN-LAST:event_trackedVisitorsDec_btnActionPerformed
@@ -456,13 +456,13 @@ public class MVisitorTrackingMain extends javax.swing.JFrame {
     
     
     //pulling visitor info from database
-    private void getVisitors(String month) {
+    private void getVisitors(int month) {
         Connection conn = (Connection) ConnectDB.connectDB();
         if (conn != null) {
             try {
                 //Statement st = conn.createStatement();
                 PreparedStatement pst = (PreparedStatement) conn.prepareStatement("SELECT * FROM visitor WHERE month = ?");
-                pst.setString(1, month);
+                pst.setInt(1, month);
                 
                 ResultSet rs = pst.executeQuery();
                 

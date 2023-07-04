@@ -1,4 +1,4 @@
-package pkg5009cem_assignment;
+package apartment.management.system;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

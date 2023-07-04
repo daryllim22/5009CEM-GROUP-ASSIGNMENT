@@ -1,7 +1,5 @@
-package pkg5009cem_assignment;
+package apartment.management.system;
 
-import apartment.management.system.EditRD;
-import apartment.management.system.MainLogin;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;

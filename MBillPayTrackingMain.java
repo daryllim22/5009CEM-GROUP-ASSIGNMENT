@@ -2,9 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package pkg5009cem_assignment;
+package apartment.management.system;
 
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,12 +21,23 @@ public class MBillPayTrackingMain extends javax.swing.JFrame {
      */
     public MBillPayTrackingMain() {
         initComponents();
+        getPaymentData();
     }
+
+     private String username;
+    
+    MBillPayTrackingMain(String username){
+       initComponents();
+       this.username = username;
+       
+    }
+
     
     
     //close entire UI window when navbtn clicked
     public void close() {
         dispose();
+        getPaymentData();
     }
 
     /**
@@ -68,14 +83,14 @@ public class MBillPayTrackingMain extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Unit no.", "Maintenance fee", "Sinking fee"
+                "Unit no.", "Resident Name", "Date", "Payment Method", "Payment Type", "Car No", "Amount"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -87,11 +102,6 @@ public class MBillPayTrackingMain extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMinWidth(150);
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(150);
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(150);
-        }
 
         jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -103,9 +113,9 @@ public class MBillPayTrackingMain extends javax.swing.JFrame {
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(233, Short.MAX_VALUE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,6 +274,45 @@ public class MBillPayTrackingMain extends javax.swing.JFrame {
                 new MBillPayTrackingMain().setVisible(true);
             }
         });
+    }
+    
+    private void getPaymentData(){
+        Connection conn = ConnectDB.connectDB();
+        if (conn != null) {
+        try {
+            String query = "SELECT unitnumber, resident_name, date, payment_method, payment_type, card_no, amount FROM billpayment";
+            
+            PreparedStatement pst = conn.prepareStatement(query);
+            
+
+            
+            ResultSet rs = pst.executeQuery();
+            
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
+            
+            while (rs.next()) {
+
+            String unitnumber = rs.getString("unitnumber");
+            String residentName = rs.getString("resident_name");
+            String date = rs.getString("date");
+            String paymentMethod = rs.getString("payment_method");
+            String paymentType = rs.getString("payment_type");
+            String cardNo = rs.getString("card_no");
+            String amount = rs.getString("amount");
+
+            // Add the data to the table
+            model.addRow(new Object[]{unitnumber, residentName, date, paymentMethod, paymentType, cardNo, amount});
+        }
+        rs.close();
+        pst.close();
+        conn.close();
+            
+        }   catch (SQLException ex) {
+                Logger.getLogger(BillPay.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+    }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

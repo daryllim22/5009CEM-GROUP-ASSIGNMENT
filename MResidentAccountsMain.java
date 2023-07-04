@@ -29,6 +29,7 @@ public class MResidentAccountsMain extends javax.swing.JFrame {
     public MResidentAccountsMain(String username){
        initComponents();
        this.username = username;
+       getResidentDetails();
        
     }
     

@@ -5,6 +5,10 @@ package apartment.management.system;
  */
 
 import javax.swing.JOptionPane;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author HP OMEN
@@ -16,6 +20,7 @@ public class BillPay extends javax.swing.JFrame {
      */
     public BillPay() {
         initComponents();
+        getPaymentData();
     }
     
     private String unitnumber;
@@ -25,6 +30,7 @@ public class BillPay extends javax.swing.JFrame {
         initComponents();
         this.unitnumber = unitnumber;
         this.residentName = residentName;
+        getPaymentData();
     }
 public void close(){
 dispose();
@@ -100,13 +106,23 @@ dispose();
 
             },
             new String [] {
-                "No.", "Unit-Number", "Name", "Payment Method", "Payment Type", "Card No", "Amount"
+                "No.", "Unit-Number", "Name", "Date", "Payment Method", "Payment Type", "Card No", "Amount"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setPreferredWidth(5);
-            jTable1.getColumnModel().getColumn(6).setPreferredWidth(15);
+            jTable1.getColumnModel().getColumn(2).setPreferredWidth(40);
+            jTable1.getColumnModel().getColumn(3).setPreferredWidth(30);
+            jTable1.getColumnModel().getColumn(7).setPreferredWidth(10);
         }
 
         jDesktopPane2.setLayer(jButton4, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -117,19 +133,21 @@ dispose();
         jDesktopPane2Layout.setHorizontalGroup(
             jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addContainerGap()
                 .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 723, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4))
-                .addContainerGap(22, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 760, Short.MAX_VALUE)
+                    .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                        .addComponent(jButton4)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jDesktopPane2Layout.setVerticalGroup(
             jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane2Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jButton4)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -273,7 +291,45 @@ dispose();
             }
         });
     }
+    
+    private void getPaymentData(){
+        Connection conn = ConnectDB.connectDB();
+        if (conn != null) {
+        try {
+            String query = "SELECT id, unitnumber, resident_name, date, payment_method, payment_type, card_no, amount FROM billpayment WHERE unitnumber = ?";
+            
+            PreparedStatement pst = conn.prepareStatement(query);
+            
+            pst.setString(1,unitnumber);
+            
+            ResultSet rs = pst.executeQuery();
+            
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
+            
+            while (rs.next()) {
+            int id = rs.getInt("id");
+            String unitnumber = rs.getString("unitnumber");
+            String residentName = rs.getString("resident_name");
+            String date = rs.getString("date");
+            String paymentMethod = rs.getString("payment_method");
+            String paymentType = rs.getString("payment_type");
+            String cardNo = rs.getString("card_no");
+            String amount = rs.getString("amount");
 
+            // Add the data to the table
+            model.addRow(new Object[]{id, unitnumber, residentName, date, paymentMethod, paymentType, cardNo, amount});
+        }
+        rs.close();
+        pst.close();
+        conn.close();
+            
+        }   catch (SQLException ex) {
+                Logger.getLogger(BillPay.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+    }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

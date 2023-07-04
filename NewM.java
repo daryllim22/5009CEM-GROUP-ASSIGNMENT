@@ -1,3 +1,4 @@
+package apartment.management.system;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -15,6 +16,15 @@ public class NewM extends javax.swing.JFrame {
      */
     public NewM() {
         initComponents();
+    }
+    
+    private String unitnumber;
+    private String residentName;
+    
+    NewM(String unitnumber, String residentName) {
+        initComponents();
+        this.unitnumber = unitnumber;
+        this.residentName = residentName;
     }
 public void close(){
 dispose();
@@ -133,25 +143,33 @@ dispose();
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         close();
-        Forum pi = new Forum ();
+        Forum pi = new Forum (unitnumber,residentName);
+        pi.setTitle("Forum Page");
+        pi.setLocationRelativeTo(null);
         pi.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         close();
-        BillPay pi = new BillPay ();
+        BillPay pi = new BillPay (unitnumber,residentName);
+        pi.setTitle("Bill Payment");
+        pi.setLocationRelativeTo(null);
         pi.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         close();
-        RD pi = new RD ();
+        RD pi = new RD (unitnumber,residentName);
+        pi.setTitle("Resident Details");
+        pi.setLocationRelativeTo(null);
         pi.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-close();
-        NewM pi = new NewM ();
+        close();
+        NewM pi = new NewM (unitnumber,residentName);
+        pi.setTitle("New Message");
+        pi.setLocationRelativeTo(null);
         pi.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 

@@ -26,12 +26,16 @@ public class CreateDBTable {
         //call the createTable function
         createTable();
         
-        //Insert 2 admin username and password
+        //Insert 2 admin username and password into admin table
         insertAdminTable("admin1","admin1");
         insertAdminTable("admin2","admin2");
         
+        //Insert 2 guard username and password into guard table
+        insertGuardTable("guard1","guard1");
+        insertGuardTable("guard2","guard2");
         }
     
+    //Insert Admin Table
    private static void insertAdminTable(String username, String password) throws Exception {
         Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
          PreparedStatement checkUsername = conn.prepareStatement("SELECT * FROM admin WHERE username = ?");
@@ -39,13 +43,31 @@ public class CreateDBTable {
         ResultSet resultSet = checkUsername.executeQuery();
 
         if (resultSet.next()) {
-            System.out.println("Username '" + username + "' already exists in Admin Table.");
+            System.out.println("Username '" + username + "' already exists in admin table.");
         } else {
             PreparedStatement insert = conn.prepareStatement("INSERT INTO admin (username, password) VALUES (?, ?)");
             insert.setString(1, username);
             insert.setString(2, password);
             insert.executeUpdate();
-            System.out.println("Username and password inserted.");
+            System.out.println("Username " + username +" and password inserted in admin table.");
+        }
+   }
+   
+   //Insert 
+   private static void insertGuardTable(String username, String password) throws Exception {
+        Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+         PreparedStatement checkUsername = conn.prepareStatement("SELECT * FROM guard WHERE username = ?");
+        checkUsername.setString(1, username);
+        ResultSet resultSet = checkUsername.executeQuery();
+
+        if (resultSet.next()) {
+            System.out.println("Username '" + username + "' already exists in guard table.");
+        } else {
+            PreparedStatement insert = conn.prepareStatement("INSERT INTO guard (username, password) VALUES (?, ?)");
+            insert.setString(1, username);
+            insert.setString(2, password);
+            insert.executeUpdate();
+            System.out.println("Username '" + username +"' and password inserted in guard table.");
         }
    }
         
@@ -145,7 +167,7 @@ public class CreateDBTable {
             if (resultSet.next()) {
                 System.out.println("visitor Table already exists.");
             } else {
-                PreparedStatement create = conn.prepareStatement("CREATE TABLE visitor(id int NOT NULL AUTO_INCREMENT, name varchar(255), car_plate_no varchar(255),reason_visit varchar(255),date varchar(255),month varchar(255),time_in varchar(255),time_out varchar(255), PRIMARY KEY(id))");
+                PreparedStatement create = conn.prepareStatement("CREATE TABLE visitor(id int NOT NULL AUTO_INCREMENT, name varchar(255), car_plate_no varchar(255),unitnumber varchar(255),reason_visit varchar(255),date varchar(255),month varchar(255),time_in varchar(255),time_out varchar(255),guard_name varchar(255), PRIMARY KEY(id))");
                 create.executeUpdate();
                 System.out.println("visitor Table created.");
             }
@@ -162,13 +184,14 @@ public class CreateDBTable {
             if (resultSet.next()) {
                 System.out.println("billpayment Table already exists.");
             } else {
-                PreparedStatement create = conn.prepareStatement("CREATE TABLE billpayment(id int NOT NULL AUTO_INCREMENT,unitnumber varchar(255),resident_name varchar(255),payment_method varchar(255),payment_type varchar(255),card_no varchar(255),amount varchar(255), PRIMARY KEY(id))");
+                PreparedStatement create = conn.prepareStatement("CREATE TABLE billpayment(id int NOT NULL AUTO_INCREMENT,unitnumber varchar(255),resident_name varchar(255),date varchar(255),payment_method varchar(255),payment_type varchar(255),card_no varchar(255),amount varchar(255), PRIMARY KEY(id))");
                 create.executeUpdate();
                 System.out.println("billpayment Table created.");
             }
             } catch (Exception e) {
             System.out.println(e);
         }
+               
     }  
 }
 

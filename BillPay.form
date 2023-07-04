@@ -124,13 +124,16 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane1" min="-2" pref="723" max="-2" attributes="0"/>
-                      <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" alignment="0" pref="760" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace pref="22" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -139,8 +142,8 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   <Component id="jButton4" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="366" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="399" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -165,14 +168,15 @@
             <Component class="javax.swing.JTable" name="jTable1">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="7" rowCount="0">
-                    <Column editable="true" title="No." type="java.lang.Object"/>
-                    <Column editable="true" title="Unit-Number" type="java.lang.Object"/>
-                    <Column editable="true" title="Name" type="java.lang.Object"/>
-                    <Column editable="true" title="Payment Method" type="java.lang.Object"/>
-                    <Column editable="true" title="Payment Type" type="java.lang.Object"/>
-                    <Column editable="true" title="Card No" type="java.lang.Object"/>
-                    <Column editable="true" title="Amount" type="java.lang.Object"/>
+                  <Table columnCount="8" rowCount="0">
+                    <Column editable="false" title="No." type="java.lang.Object"/>
+                    <Column editable="false" title="Unit-Number" type="java.lang.Object"/>
+                    <Column editable="false" title="Name" type="java.lang.Object"/>
+                    <Column editable="false" title="Date" type="java.lang.Object"/>
+                    <Column editable="false" title="Payment Method" type="java.lang.Object"/>
+                    <Column editable="false" title="Payment Type" type="java.lang.Object"/>
+                    <Column editable="false" title="Card No" type="java.lang.Object"/>
+                    <Column editable="false" title="Amount" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -187,7 +191,12 @@
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="40" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="30" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
@@ -207,7 +216,7 @@
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="15" resizable="true">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="10" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>

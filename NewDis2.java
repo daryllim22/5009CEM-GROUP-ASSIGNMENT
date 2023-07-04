@@ -223,7 +223,7 @@ dispose();
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         close();
-        BillPay pi = new BillPay ();
+        BillPay pi = new BillPay (unitnumber,residentName);
         pi.setTitle("Bill Payment");
         pi.setLocationRelativeTo(null);
         pi.setVisible(true);        // TODO add your handling code here:
@@ -239,7 +239,7 @@ dispose();
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         close();
-        NewM pi = new NewM ();
+        NewM pi = new NewM (unitnumber,residentName);
         pi.setTitle("New Message");
         pi.setLocationRelativeTo(null);
         pi.setVisible(true);        // TODO add your handling code here:
@@ -277,7 +277,16 @@ dispose();
         String text = jTextArea1.getText();
         
         //validation check
-        if(title.isEmpty() || text.isEmpty()){
+        if (unitnumber == null) {
+        // If the unitnumber is null, prompt an error message and redirect to the login page
+        JOptionPane.showMessageDialog(this, "Please log in to post the form.", "Error", JOptionPane.ERROR_MESSAGE);
+        close();
+        Login_Resident login = new Login_Resident();
+        login.setTitle("Resident Login");
+        login.setLocationRelativeTo(null);
+        login.setVisible(true);
+        }
+        else if(title.isEmpty() || text.isEmpty()){
             JOptionPane.showMessageDialog(this, "Title or Text is empty!", "Error", JOptionPane.ERROR_MESSAGE);
         }
         else{

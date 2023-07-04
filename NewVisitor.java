@@ -2,9 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package pkg5009cemgroup4;
+package apartment.management.system;
 
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -22,16 +24,13 @@ public class NewVisitor extends javax.swing.JFrame {
         initComponents();
     }
     
-    private String unitnumber;
-    private String visitorName;
-    
-    NewVisitor(String unitnumber, String visitorName) {
+    private String username;
+    NewVisitor(String username) {
+       this.username = username;
        initComponents();
-       this.unitnumber = unitnumber;
-       this.visitorName = visitorName;
-       getVisitorTracking();
-       
     }
+
+    
     
     public void close(){
         dispose();
@@ -50,17 +49,19 @@ public class NewVisitor extends javax.swing.JFrame {
         jToggleButton1 = new javax.swing.JToggleButton();
         jDesktopPane2 = new javax.swing.JDesktopPane();
         jLabel6 = new javax.swing.JLabel();
-        Dname1 = new javax.swing.JTextField();
-        Dname2 = new javax.swing.JTextField();
-        Dname3 = new javax.swing.JTextField();
-        Dname5 = new javax.swing.JTextField();
+        Dcarplateno = new javax.swing.JTextField();
+        Dreason = new javax.swing.JTextField();
+        Ddate = new javax.swing.JTextField();
+        Dname = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
-        Dname6 = new javax.swing.JTextField();
+        Dtimein = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        Dunitnumber = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,33 +79,31 @@ public class NewVisitor extends javax.swing.JFrame {
             }
         });
 
+        jDesktopPane2.setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel6.setText("Name:");
 
-        Dname1.setEditable(false);
-        Dname1.addActionListener(new java.awt.event.ActionListener() {
+        Dcarplateno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Dname1ActionPerformed(evt);
+                DcarplatenoActionPerformed(evt);
             }
         });
 
-        Dname2.setEditable(false);
-        Dname2.addActionListener(new java.awt.event.ActionListener() {
+        Dreason.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Dname2ActionPerformed(evt);
+                DreasonActionPerformed(evt);
             }
         });
 
-        Dname3.setEditable(false);
-        Dname3.addActionListener(new java.awt.event.ActionListener() {
+        Ddate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Dname3ActionPerformed(evt);
+                DdateActionPerformed(evt);
             }
         });
 
-        Dname5.setEditable(false);
-        Dname5.addActionListener(new java.awt.event.ActionListener() {
+        Dname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Dname5ActionPerformed(evt);
+                DnameActionPerformed(evt);
             }
         });
 
@@ -130,84 +129,109 @@ public class NewVisitor extends javax.swing.JFrame {
             }
         });
 
-        Dname6.setEditable(false);
-        Dname6.addActionListener(new java.awt.event.ActionListener() {
+        Dtimein.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Dname6ActionPerformed(evt);
+                DtimeinActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("Unit-Number:");
+
+        Dunitnumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DunitnumberActionPerformed(evt);
             }
         });
 
         jDesktopPane2.setLayer(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(Dname1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(Dname2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(Dname3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(Dname5, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(Dcarplateno, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(Dreason, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(Ddate, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(Dname, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jButton4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(Dname6, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(Dtimein, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(Dunitnumber, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
         jDesktopPane2.setLayout(jDesktopPane2Layout);
         jDesktopPane2Layout.setHorizontalGroup(
             jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane2Layout.createSequentialGroup()
-                .addGap(109, 109, 109)
-                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
-                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Dname3, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                    .addComponent(Dname6)
-                    .addComponent(Dname2)
-                    .addComponent(Dname1)
-                    .addComponent(Dname5))
-                .addGap(146, 146, 146))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton4)
                 .addGap(46, 46, 46))
+            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jButton2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                        .addGap(109, 109, 109)
+                        .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(55, 55, 55))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane2Layout.createSequentialGroup()
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane2Layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(69, 69, 69))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane2Layout.createSequentialGroup()
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane2Layout.createSequentialGroup()
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(73, 73, 73)))))
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Ddate, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                    .addComponent(Dtimein)
+                    .addComponent(Dreason)
+                    .addComponent(Dcarplateno)
+                    .addComponent(Dname)
+                    .addComponent(Dunitnumber, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(146, 146, 146))
         );
         jDesktopPane2Layout.setVerticalGroup(
             jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane2Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jButton2)
-                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel5))
-                    .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                        .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Dname5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Dname1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Dname2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Dname3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Dname6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(59, 59, 59)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Dname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Dcarplateno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Dunitnumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addGap(14, 14, 14)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Dreason, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Ddate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Dtimein, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(26, 26, 26)
                 .addComponent(jButton4)
                 .addGap(32, 32, 32))
         );
@@ -221,20 +245,20 @@ public class NewVisitor extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
                     .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(699, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(190, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jDesktopPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75))
+                .addGap(89, 89, 89))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jToggleButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addGap(54, 54, 54)
                 .addComponent(jDesktopPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(25, 25, 25))
         );
@@ -253,10 +277,10 @@ public class NewVisitor extends javax.swing.JFrame {
                 login.setVisible(true);
             }else{
                 dispose();
-                VisitorTracking vt = new VisitorTracking(unitnumber, visitorName);
-                vt.setTitle("Visitor Tracking");
-                vt.setLocationRelativeTo(null); //center the form
-                vt.setVisible(true);
+                NewVisitor nv = new NewVisitor();
+                nv.setTitle("Visitor Tracking");
+                nv.setLocationRelativeTo(null); //center the form
+                nv.setVisible(true);
             }        
             
         
@@ -264,7 +288,7 @@ public class NewVisitor extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         close();
-        NewVisitor pi = new NewVisitor (unitnumber, visitorName);
+        NewVisitor pi = new NewVisitor ();
         pi.setTitle("Visitor Tracking");
         pi.setLocationRelativeTo(null);
         pi.setVisible(true);         // TODO add your handling code here:
@@ -272,39 +296,40 @@ public class NewVisitor extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         close();
-        NewVisitor pi = new NewVisitor (unitnumber, visitorName);
-        pi.setTitle("Back");
+        SecurityMain pi = new SecurityMain ();
+        pi.setTitle("Security Main");
         pi.setLocationRelativeTo(null);
-        pi.setVisible(true);         // TODO add your handling code here:
+        pi.setVisible(true); // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        close();
-        NewVisitor pi = new NewVisitor (unitnumber, visitorName);
-        pi.setTitle("OK");
-        pi.setLocationRelativeTo(null);
-        pi.setVisible(true); // TODO add your handling code here:
+         // TODO add your handling code here:
+         InsertVisitorDetails();
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void Dname1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dname1ActionPerformed
+    private void DcarplatenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DcarplatenoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Dname1ActionPerformed
+    }//GEN-LAST:event_DcarplatenoActionPerformed
 
-    private void Dname2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dname2ActionPerformed
+    private void DreasonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DreasonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Dname2ActionPerformed
+    }//GEN-LAST:event_DreasonActionPerformed
 
-    private void Dname3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dname3ActionPerformed
+    private void DdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DdateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Dname3ActionPerformed
+    }//GEN-LAST:event_DdateActionPerformed
 
-    private void Dname5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dname5ActionPerformed
+    private void DnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DnameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Dname5ActionPerformed
+    }//GEN-LAST:event_DnameActionPerformed
 
-    private void Dname6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dname6ActionPerformed
+    private void DtimeinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DtimeinActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Dname6ActionPerformed
+    }//GEN-LAST:event_DtimeinActionPerformed
+
+    private void DunitnumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DunitnumberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DunitnumberActionPerformed
     
     /**
      * @param args the command line arguments
@@ -340,13 +365,100 @@ public class NewVisitor extends javax.swing.JFrame {
             }
         });
     }
+    
+    
+    private void InsertVisitorDetails() {
+            String name = Dname.getText();
+            String carPlateNo = Dcarplateno.getText();
+            String unitnumber = Dunitnumber.getText();
+            String reasonForVisit = Dreason.getText();
+            String date = Ddate.getText();
+            String timeIn = Dtimein.getText();
+            
+            
+            //validation check
+            if (username == null) {
+        // If the username is null, prompt an error message and redirect to the login page
+            JOptionPane.showMessageDialog(this, "Please log in to record visitor!.", "Error", JOptionPane.ERROR_MESSAGE);
+            close();
+            Login_Guard login = new Login_Guard();
+            login.setTitle("Guard Login");
+            login.setLocationRelativeTo(null);
+            login.setVisible(true);
+        }
+        else if(name.isEmpty() || carPlateNo.isEmpty() || unitnumber.isEmpty() || reasonForVisit.isEmpty() || date.isEmpty() || timeIn.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Please fill in all the fields.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+        }
+        else if (!isValidDateFormat(date)) {
+        JOptionPane.showMessageDialog(this, "Please enter the date in the format DD/MM/YY.", "Invalid Date Format", JOptionPane.ERROR_MESSAGE);
+        return; // Stop further processing
+        }
+        
+        else{     
+    Connection conn = ConnectDB.connectDB();
+    if (conn != null) {
+        try {
+            String[] dateComponents = date.split("/");
+            int day = Integer.parseInt(dateComponents[0]);
+            int month = Integer.parseInt(dateComponents[1]);
+            int year = Integer.parseInt(dateComponents[2]);
+
+          
+
+            PreparedStatement insert = (PreparedStatement)conn.prepareStatement("INSERT INTO visitor(name, car_plate_no, unitnumber, reason_visit, date,month, time_in,guard_name)values(?,?,?,?,?,?,?,?)");
+            insert.setString(1, name);
+            insert.setString(2, carPlateNo);
+            insert.setString(3, unitnumber);
+            insert.setString(4, reasonForVisit);
+            insert.setString(5, date);
+            insert.setInt(6, month);
+            insert.setString(7, timeIn);
+            insert.setString(8, username);
+            
+            int rs = insert.executeUpdate();
+                if (rs > 0) {
+                    JOptionPane.showMessageDialog(this, "Successfully insert visitor record!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    close();
+                    SecurityMain pi = new SecurityMain(username);
+                    pi.setVisible(true);
+                }
+                else {
+                    JOptionPane.showMessageDialog(this, "Fail to insert visitor record.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+           
+            
+            insert.close();
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(NewVisitor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+}
+}
+    private boolean isValidDateFormat(String date) {
+    try {
+        // Use SimpleDateFormat to parse the date with the specified format
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
+        sdf.setLenient(false); // Disable lenient mode to ensure strict date parsing
+        sdf.parse(date); // Try to parse the date
+
+        // If parsing succeeds, the date format is valid
+        return true;
+    } catch (ParseException e) {
+        // If parsing fails, the date format is invalid
+        return false;
+    }
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Dname1;
-    private javax.swing.JTextField Dname2;
-    private javax.swing.JTextField Dname3;
-    private javax.swing.JTextField Dname5;
-    private javax.swing.JTextField Dname6;
+    private javax.swing.JTextField Dcarplateno;
+    private javax.swing.JTextField Ddate;
+    private javax.swing.JTextField Dname;
+    private javax.swing.JTextField Dreason;
+    private javax.swing.JTextField Dtimein;
+    private javax.swing.JTextField Dunitnumber;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
@@ -356,6 +468,7 @@ public class NewVisitor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }

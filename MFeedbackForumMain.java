@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package pkg5009cem_assignment;
+package apartment.management.system;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -24,6 +24,7 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
      */
     public MFeedbackForumMain() {
         initComponents();
+        displayDiscussions();
     }
     
     //variable declaration
@@ -174,7 +175,7 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
     private void visitorTrack_navbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitorTrack_navbtnActionPerformed
         
         close();
-        MVisitorTrackingMain pi = new MVisitorTrackingMain();
+        MVisitorTrackingMain pi = new MVisitorTrackingMain(username);
         pi.setTitle("Visitor Tracking");
         pi.setLocationRelativeTo(null); //center the form
         pi.setVisible(true);
@@ -185,7 +186,7 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
     private void paymentTrack_navbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paymentTrack_navbtnActionPerformed
     
         close();
-        MBillPayTrackingMain pi = new MBillPayTrackingMain();
+        MBillPayTrackingMain pi = new MBillPayTrackingMain(username);
         pi.setTitle("Bill Payment Tracking");
         pi.setLocationRelativeTo(null); //center the form
         pi.setVisible(true);
@@ -196,7 +197,7 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
     private void residentAcc_navbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residentAcc_navbtnActionPerformed
     
         close();
-        MResidentAccountsMain pi = new MResidentAccountsMain();
+        MResidentAccountsMain pi = new MResidentAccountsMain(username);
         pi.setTitle("Resident Accounts");
         pi.setLocationRelativeTo(null); //center the form
         pi.setVisible(true);
@@ -216,7 +217,7 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
             }
             else {
                 dispose();
-                MFeedbackForumMain pi = new MFeedbackForumMain();
+                MFeedbackForumMain pi = new MFeedbackForumMain(username);
                 pi.setTitle("Resident Accounts");
                 pi.setLocationRelativeTo(null); //center the form
                 pi.setVisible(true);
@@ -282,20 +283,19 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
         if (conn != null) {
             try {
                 //Statement st = conn.createStatement();
-                PreparedStatement pst = (PreparedStatement) conn.prepareStatement("SELECT * FROM manager_forum WHERE title = ?");
+                PreparedStatement pst = (PreparedStatement) conn.prepareStatement("SELECT * FROM manager_forum ");
                 //pst.setString(1, "title"); //telling the system to query for data inside "title"
                 
                 ResultSet rs = pst.executeQuery();
                 
+                DefaultTableModel model = (DefaultTableModel) mForumDis_table.getModel();
+                model.setRowCount(0);
+                
                 while (rs.next()) {
                     
-                    String disTitle = rs.getString("title");
+                    String title = rs.getString("title");
                     
-                    Object[] disRowData = {disTitle};
-                    DefaultTableModel disTableModel = (DefaultTableModel) mForumDis_table.getModel();
-                    //mForumDis_table.setModel(disTableModel);
-
-                    disTableModel.addRow(disRowData);
+                    model.addRow(new Object[]{title});
                     
                     
                 }

@@ -145,7 +145,7 @@ public class CreateDBTable {
             if (resultSet.next()) {
                 System.out.println("visitor Table already exists.");
             } else {
-                PreparedStatement create = conn.prepareStatement("CREATE TABLE visitor(id int NOT NULL AUTO_INCREMENT, name varchar(255), car_plate_no varchar(255),reason_visit varchar(255),date varchar(255),month varchar(255),time_in varchar(255),time_out varchar(255), PRIMARY KEY(id))");
+                PreparedStatement create = conn.prepareStatement("CREATE TABLE visitor(id int NOT NULL AUTO_INCREMENT, name varchar(255), car_plate_no varchar(255),reason_visit varchar(255),date varchar(255),month int(255),time_in varchar(255),time_out varchar(255), PRIMARY KEY(id))");
                 create.executeUpdate();
                 System.out.println("visitor Table created.");
             }

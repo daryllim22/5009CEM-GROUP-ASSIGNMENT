@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -24,6 +26,7 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
      */
     public MFeedbackForumMain() {
         initComponents();
+        displayDiscussions();
     }
     
     //variable declaration
@@ -105,6 +108,23 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+        });
+        //making the table row clickable
+        mForumDis_table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if(!e.getValueIsAdjusting()) {
+                    int selected = mForumDis_table.getSelectedRow();
+
+                    if (selected != -1) {
+                        String discussion = (String) mForumDis_table.getValueAt(selected,0);
+
+                        close();
+                        MOngoingDis pi = new MOngoingDis(discussion);
+                        pi.setVisible(true);
+                    }
+                }
             }
         });
         jScrollPane1.setViewportView(mForumDis_table);
@@ -237,6 +257,7 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
     }//GEN-LAST:event_newDis_btnActionPerformed
     
     
+    
     /**
      * @param args the command line arguments
      */
@@ -275,6 +296,10 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
     
     
     
+    //sini sini
+    
+    
+    
     //display discussions
     private void displayDiscussions() {
         
@@ -282,22 +307,21 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
         if (conn != null) {
             try {
                 //Statement st = conn.createStatement();
-                PreparedStatement pst = (PreparedStatement) conn.prepareStatement("SELECT * FROM manager_forum WHERE title = ?");
+                PreparedStatement pst = (PreparedStatement) conn.prepareStatement("SELECT * FROM manager_forum");
                 //pst.setString(1, "title"); //telling the system to query for data inside "title"
                 
                 ResultSet rs = pst.executeQuery();
                 
+                DefaultTableModel model = (DefaultTableModel) mForumDis_table.getModel();
+                model.setRowCount(0);
+                
                 while (rs.next()) {
                     
                     String disTitle = rs.getString("title");
-                    
-                    Object[] disRowData = {disTitle};
-                    DefaultTableModel disTableModel = (DefaultTableModel) mForumDis_table.getModel();
-                    //mForumDis_table.setModel(disTableModel);
 
-                    disTableModel.addRow(disRowData);
-                    
-                    
+                    //add data to the table
+                    model.addRow(new Object[]{disTitle});
+ 
                 }
                 rs.close();
                 pst.close();

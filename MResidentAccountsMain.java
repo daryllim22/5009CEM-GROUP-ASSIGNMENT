@@ -4,7 +4,14 @@
  */
 package pkg5009cem_assignment;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,6 +24,7 @@ public class MResidentAccountsMain extends javax.swing.JFrame {
      */
     public MResidentAccountsMain() {
         initComponents();
+        displayAllResidents();
     }
     
     
@@ -39,7 +47,7 @@ public class MResidentAccountsMain extends javax.swing.JFrame {
         createNewAcc_btn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        allResidents_table = new javax.swing.JTable();
         visitorTrack_navbtn = new javax.swing.JButton();
         forum_navbtn = new javax.swing.JButton();
         paymentTrack_navbtn = new javax.swing.JButton();
@@ -73,7 +81,7 @@ public class MResidentAccountsMain extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Resident accounts");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        allResidents_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -96,7 +104,7 @@ public class MResidentAccountsMain extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(allResidents_table);
 
         jDesktopPane2.setLayer(createNewAcc_btn, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -274,8 +282,50 @@ public class MResidentAccountsMain extends javax.swing.JFrame {
             }
         });
     }
+    
+    
+    private void displayAllResidents() {
+        
+        Connection conn = (Connection) ConnectDB.connectDB();
+        if (conn != null) {
+            try {
+                //Statement st = conn.createStatement();
+                PreparedStatement pst = (PreparedStatement) conn.prepareStatement("SELECT * FROM resident");
+                //pst.setString(1, "title"); //telling the system to query for data inside "title"
+                
+                ResultSet rs = pst.executeQuery();
+                
+                DefaultTableModel allResTableModel = (DefaultTableModel) allResidents_table.getModel();
+                allResTableModel.setRowCount(0);
+                while (rs.next()) {
+                    
+                    String accID = rs.getString("unit_number");
+                    String pass = rs.getString("password");
+                    String rName = rs.getString("resident_name");
+                    String email = rs.getString("email");
+                    String phoneNo = rs.getString("telefon_number");
+                    String carPlate = rs.getString("car_plate_no");
+                    
+                    //String[] resRowData = {accID, pass, rName, email, phoneNo, carPlate};
+                    
+                    //mForumDis_table.setModel(disTableModel);
+
+                    allResTableModel.addRow(new Object[]{accID, pass, rName, email, phoneNo, carPlate});
+                    
+                    
+                }
+                rs.close();
+                pst.close();
+                conn.close();
+            } catch (SQLException ex) {
+                 Logger.getLogger(RD.class.getName()).log(Level.SEVERE, null, ex);
+             }
+        }
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable allResidents_table;
     private javax.swing.JButton createNewAcc_btn;
     private javax.swing.JButton forum_navbtn;
     private javax.swing.JDesktopPane jDesktopPane2;
@@ -283,7 +333,6 @@ public class MResidentAccountsMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton logout_btn;
     private javax.swing.JButton paymentTrack_navbtn;
     private javax.swing.JButton residentAcc_navbtn;

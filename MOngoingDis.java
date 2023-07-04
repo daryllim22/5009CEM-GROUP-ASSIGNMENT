@@ -24,6 +24,14 @@ public class MOngoingDis extends javax.swing.JFrame {
      */
     public MOngoingDis() {
         initComponents();
+        displayThread();
+    }
+    
+    private String discussion;
+    
+    MOngoingDis(String discussion) {
+        this.discussion = discussion;
+        displayThread();
     }
     
     //close entire UI window when navbtn is clicked

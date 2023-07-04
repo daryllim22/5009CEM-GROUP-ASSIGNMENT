@@ -22,6 +22,7 @@ public class MBillPayTrackingMain extends javax.swing.JFrame {
     public MBillPayTrackingMain() {
         initComponents();
         getPaymentData();
+
     }
 
      private String username;
@@ -29,7 +30,7 @@ public class MBillPayTrackingMain extends javax.swing.JFrame {
     MBillPayTrackingMain(String username){
        initComponents();
        this.username = username;
-       
+       getPaymentData();
     }
 
     

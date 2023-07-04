@@ -4,7 +4,14 @@
  */
 package pkg5009cem_assignment;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,6 +26,8 @@ public class MVisitorTrackingMain extends javax.swing.JFrame {
         initComponents();
     }
     
+    //variable declaration
+    private String month;
     
     //close entire UI page when navbtn clicked
     public void close() {
@@ -38,7 +47,7 @@ public class MVisitorTrackingMain extends javax.swing.JFrame {
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        visitorTrack_table = new javax.swing.JTable();
         trackedVisitorsJan_btn = new javax.swing.JButton();
         trackedVisitorsFeb_btn = new javax.swing.JButton();
         trackedVisitorsMar_btn = new javax.swing.JButton();
@@ -51,7 +60,6 @@ public class MVisitorTrackingMain extends javax.swing.JFrame {
         trackedVisitorsOct_btn = new javax.swing.JButton();
         trackedVisitorsNov_btn = new javax.swing.JButton();
         trackedVisitorsDec_btn = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         visitorTrack_navbtn = new javax.swing.JButton();
         forum_navbtn = new javax.swing.JButton();
         paymentTrack_navbtn = new javax.swing.JButton();
@@ -78,7 +86,7 @@ public class MVisitorTrackingMain extends javax.swing.JFrame {
         jLabel1.setText("Monthly Visitor Tracking");
         jDesktopPane1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 21, 200, 20));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        visitorTrack_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -101,7 +109,7 @@ public class MVisitorTrackingMain extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(visitorTrack_table);
 
         jDesktopPane1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 570, 360));
 
@@ -114,41 +122,92 @@ public class MVisitorTrackingMain extends javax.swing.JFrame {
         jDesktopPane1.add(trackedVisitorsJan_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 90, -1));
 
         trackedVisitorsFeb_btn.setText("February");
+        trackedVisitorsFeb_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trackedVisitorsFeb_btnActionPerformed(evt);
+            }
+        });
         jDesktopPane1.add(trackedVisitorsFeb_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 90, -1));
 
         trackedVisitorsMar_btn.setText("March");
+        trackedVisitorsMar_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trackedVisitorsMar_btnActionPerformed(evt);
+            }
+        });
         jDesktopPane1.add(trackedVisitorsMar_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 90, -1));
 
         trackedVisitorsApr_btn.setText("April");
+        trackedVisitorsApr_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trackedVisitorsApr_btnActionPerformed(evt);
+            }
+        });
         jDesktopPane1.add(trackedVisitorsApr_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 90, -1));
 
         trackedVisitorsMay_btn.setText("May");
+        trackedVisitorsMay_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trackedVisitorsMay_btnActionPerformed(evt);
+            }
+        });
         jDesktopPane1.add(trackedVisitorsMay_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 90, -1));
 
         trackedVisitorsJun_btn.setText("June");
+        trackedVisitorsJun_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trackedVisitorsJun_btnActionPerformed(evt);
+            }
+        });
         jDesktopPane1.add(trackedVisitorsJun_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 90, -1));
 
         trackedVisitorsJul_btn.setText("July");
+        trackedVisitorsJul_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trackedVisitorsJul_btnActionPerformed(evt);
+            }
+        });
         jDesktopPane1.add(trackedVisitorsJul_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 90, -1));
 
         trackedVisitorsAug_btn.setText("August");
+        trackedVisitorsAug_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trackedVisitorsAug_btnActionPerformed(evt);
+            }
+        });
         jDesktopPane1.add(trackedVisitorsAug_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 90, -1));
 
         trackedVisitorsSep_btn.setText("September");
+        trackedVisitorsSep_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trackedVisitorsSep_btnActionPerformed(evt);
+            }
+        });
         jDesktopPane1.add(trackedVisitorsSep_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 90, -1));
 
         trackedVisitorsOct_btn.setText("October");
+        trackedVisitorsOct_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trackedVisitorsOct_btnActionPerformed(evt);
+            }
+        });
         jDesktopPane1.add(trackedVisitorsOct_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 90, -1));
 
         trackedVisitorsNov_btn.setText("November");
+        trackedVisitorsNov_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trackedVisitorsNov_btnActionPerformed(evt);
+            }
+        });
         jDesktopPane1.add(trackedVisitorsNov_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 90, -1));
 
         trackedVisitorsDec_btn.setText("December");
+        trackedVisitorsDec_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trackedVisitorsDec_btnActionPerformed(evt);
+            }
+        });
         jDesktopPane1.add(trackedVisitorsDec_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 90, -1));
-
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("View tracked details");
-        jDesktopPane1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, -1, -1));
 
         jPanel1.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 720, 460));
 
@@ -259,9 +318,102 @@ public class MVisitorTrackingMain extends javax.swing.JFrame {
         
     }//GEN-LAST:event_logout_btnActionPerformed
 
+    
+    //when user views January's records
     private void trackedVisitorsJan_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trackedVisitorsJan_btnActionPerformed
-        // TODO add your handling code here:
+        
+        month = "January";
+        getVisitors(month);
+        
     }//GEN-LAST:event_trackedVisitorsJan_btnActionPerformed
+
+    //when user views February's records
+    private void trackedVisitorsFeb_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trackedVisitorsFeb_btnActionPerformed
+        
+        month = "February";
+        getVisitors(month);
+        
+    }//GEN-LAST:event_trackedVisitorsFeb_btnActionPerformed
+
+    //when user views March's records
+    private void trackedVisitorsMar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trackedVisitorsMar_btnActionPerformed
+        
+        month = "March";
+        getVisitors(month);
+        
+    }//GEN-LAST:event_trackedVisitorsMar_btnActionPerformed
+
+    //when user views April's records
+    private void trackedVisitorsApr_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trackedVisitorsApr_btnActionPerformed
+        
+        month = "April";
+        getVisitors(month);
+        
+    }//GEN-LAST:event_trackedVisitorsApr_btnActionPerformed
+
+    //when user views May's records
+    private void trackedVisitorsMay_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trackedVisitorsMay_btnActionPerformed
+        
+        month = "May";
+        getVisitors(month);
+        
+    }//GEN-LAST:event_trackedVisitorsMay_btnActionPerformed
+
+    //when user views June's records
+    private void trackedVisitorsJun_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trackedVisitorsJun_btnActionPerformed
+        
+        month = "June";
+        getVisitors(month);
+        
+    }//GEN-LAST:event_trackedVisitorsJun_btnActionPerformed
+
+    //when user views July's records
+    private void trackedVisitorsJul_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trackedVisitorsJul_btnActionPerformed
+        
+        month = "July";
+        getVisitors(month);
+        
+    }//GEN-LAST:event_trackedVisitorsJul_btnActionPerformed
+
+    //when user views August's records
+    private void trackedVisitorsAug_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trackedVisitorsAug_btnActionPerformed
+        
+        month = "August";
+        getVisitors(month);
+        
+    }//GEN-LAST:event_trackedVisitorsAug_btnActionPerformed
+
+    //when user views September's records
+    private void trackedVisitorsSep_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trackedVisitorsSep_btnActionPerformed
+        
+        month = "September";
+        getVisitors(month);
+        
+    }//GEN-LAST:event_trackedVisitorsSep_btnActionPerformed
+
+    //when user views October's records
+    private void trackedVisitorsOct_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trackedVisitorsOct_btnActionPerformed
+        
+        month = "October";
+        getVisitors(month);
+        
+    }//GEN-LAST:event_trackedVisitorsOct_btnActionPerformed
+
+    //when user views November's records
+    private void trackedVisitorsNov_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trackedVisitorsNov_btnActionPerformed
+        
+        month = "November";
+        getVisitors(month);
+        
+    }//GEN-LAST:event_trackedVisitorsNov_btnActionPerformed
+
+    //when user views December's records
+    private void trackedVisitorsDec_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trackedVisitorsDec_btnActionPerformed
+        
+        month = "December";
+        getVisitors(month);
+        
+    }//GEN-LAST:event_trackedVisitorsDec_btnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -300,16 +452,52 @@ public class MVisitorTrackingMain extends javax.swing.JFrame {
             }
         });
     }
+    
+    
+    
+    //pulling visitor info from database
+    private void getVisitors(String month) {
+        Connection conn = (Connection) ConnectDB.connectDB();
+        if (conn != null) {
+            try {
+                //Statement st = conn.createStatement();
+                PreparedStatement pst = (PreparedStatement) conn.prepareStatement("SELECT * FROM visitor WHERE month = ?");
+                pst.setString(1, month);
+                
+                ResultSet rs = pst.executeQuery();
+                
+                DefaultTableModel model = (DefaultTableModel) visitorTrack_table.getModel();
+                model.setRowCount(0);
+                while (rs.next()) {
+                    
+                    String vName = rs.getString("name");
+                    String carPlate = rs.getString("car_plate_no");
+                    String reasonVisit = rs.getString("reason_visit");
+                    String date = rs.getString("date");
+                    String timeI = rs.getString("time_in");
+                    String timeO = rs.getString("time_out");
+
+                    model.addRow(new Object[]{vName, carPlate, reasonVisit, date, timeI, timeO});
+                    
+                    
+                }
+                rs.close();
+                pst.close();
+                conn.close();
+            } catch (SQLException ex) {
+                 Logger.getLogger(RD.class.getName()).log(Level.SEVERE, null, ex);
+             }
+        }
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton forum_navbtn;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton logout_btn;
     private javax.swing.JButton paymentTrack_navbtn;
     private javax.swing.JButton residentAcc_navbtn;
@@ -326,5 +514,6 @@ public class MVisitorTrackingMain extends javax.swing.JFrame {
     private javax.swing.JButton trackedVisitorsOct_btn;
     private javax.swing.JButton trackedVisitorsSep_btn;
     private javax.swing.JButton visitorTrack_navbtn;
+    private javax.swing.JTable visitorTrack_table;
     // End of variables declaration//GEN-END:variables
 }

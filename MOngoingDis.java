@@ -4,7 +4,14 @@
  */
 package pkg5009cem_assignment;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -278,6 +285,44 @@ public class MOngoingDis extends javax.swing.JFrame {
                 new MOngoingDis().setVisible(true);
             }
         });
+    }
+    
+    
+    //display ongoing discussion
+    private void displayThread() {
+        
+        Connection conn = ConnectDB.connectDB();
+        if (conn != null) {
+        try {
+            String query = "SELECT title,text FROM manager_forum WHERE id = ?";
+            
+            PreparedStatement pst = conn.prepareStatement(query);
+            
+            pst.setString(1, id);
+            
+            ResultSet rs = pst.executeQuery();
+            
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
+            
+            while (rs.next()) {
+            String title = rs.getString("title");
+            String text = rs.getString("text");
+
+
+            // Add the data to the table
+            model.addRow(new Object[]{title,text});
+        }
+        rs.close();
+        pst.close();
+        conn.close();
+            
+        }   catch (SQLException ex) {
+                Logger.getLogger(BillPay.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+    }
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

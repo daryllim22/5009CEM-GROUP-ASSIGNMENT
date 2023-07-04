@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package pkg5009cem_assignment;
+package apartment.management.system;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -316,13 +316,13 @@ public class MCreateNewResident extends javax.swing.JFrame {
                 
                 int insertSuccess = pst.executeUpdate();
                 if (insertSuccess > 0) {
-                    JOptionPane.showMessageDialog(null, "Message posted");
+                    JOptionPane.showMessageDialog(null, "Account Created!");
                     close();
                     MResidentAccountsMain pi = new MResidentAccountsMain();
                     pi.setVisible(true);
                 }
                 else {
-                    JOptionPane.showMessageDialog(null, "Failed to post message. Please try again");
+                    JOptionPane.showMessageDialog(null, "Failed to add Account. Please try again");
                 }
                 
      

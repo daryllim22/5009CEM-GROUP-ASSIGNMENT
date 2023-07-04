@@ -1,4 +1,4 @@
-package pkg5009cem_assignment;
+package apartment.management.system;
 
 
 import java.sql.*;
@@ -91,7 +91,7 @@ public class Login_Resident extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel17Layout.createSequentialGroup()
-                        .addGap(0, 74, Short.MAX_VALUE)
+                        .addGap(0, 76, Short.MAX_VALUE)
                         .addComponent(jButton32)
                         .addGap(18, 18, 18)
                         .addComponent(jButton31)

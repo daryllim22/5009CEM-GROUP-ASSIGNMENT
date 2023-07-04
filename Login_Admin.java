@@ -234,10 +234,9 @@ public class Login_Admin extends javax.swing.JFrame {
 
                 dispose();
                 
-                String id = result.getString("id");
                 
                 //Go to adminmainpage after login successful
-                test login = new test(id,username, password);
+                MFeedbackForumMain login = new MFeedbackForumMain(username);
                 login.setTitle("Admin Home Page");
                 login.setLocationRelativeTo(null); //center the form
                 login.setVisible(true);

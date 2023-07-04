@@ -247,7 +247,7 @@ public class Login_Guard extends javax.swing.JFrame {
                 String id = result.getString("id");
 
                 //Go to Guard Home page after login 
-                test login = new test(id,username, password);
+                SecurityMain login = new SecurityMain(username);
                 login.setTitle("Guard Home Page");
                 login.setLocationRelativeTo(null); //center the form
                 login.setVisible(true);

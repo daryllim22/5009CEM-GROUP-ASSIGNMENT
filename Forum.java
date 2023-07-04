@@ -1,4 +1,4 @@
-package pkg5009cem_assignment;
+package apartment.management.system;
 
 import javax.swing.JOptionPane;
 

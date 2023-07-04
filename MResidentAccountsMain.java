@@ -2,9 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package pkg5009cem_assignment;
+package apartment.management.system;
 
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,12 +21,22 @@ public class MResidentAccountsMain extends javax.swing.JFrame {
      */
     public MResidentAccountsMain() {
         initComponents();
+        getResidentDetails();
+    }
+
+ private String username;
+    
+    public MResidentAccountsMain(String username){
+       initComponents();
+       this.username = username;
+       
     }
     
     
     //close entire UI window when navbtn clicked
     public void close(){
         dispose();
+
     }
 
     /**
@@ -78,14 +92,14 @@ public class MResidentAccountsMain extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Account ID", "Resident name", "Car plate no.", "Phone no.", "Email"
+                "Unit Number", "Password", "Resident name", "Email", "Phone no.", "Car plate no."
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, true
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -274,7 +288,46 @@ public class MResidentAccountsMain extends javax.swing.JFrame {
             }
         });
     }
+    
+  private void getResidentDetails(){
+        Connection conn = ConnectDB.connectDB();
+        if (conn != null) {
+        try {
+            String query = "SELECT unit_number,password, resident_name, email,telefon_number,car_plate_no FROM resident";
+            
+            PreparedStatement pst = conn.prepareStatement(query);
+            
 
+            
+            ResultSet rs = pst.executeQuery();
+            
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
+            
+            while (rs.next()) {
+
+            String unitnumber = rs.getString("unit_number");
+            String password = rs.getString("password");
+            String residentName = rs.getString("resident_name");
+            String email = rs.getString("email");
+            String telno = rs.getString("telefon_number");
+            String carno = rs.getString("car_plate_no");
+
+
+            // Add the data to the table
+            model.addRow(new Object[]{unitnumber,password, residentName, email,telno,carno});
+        }
+        rs.close();
+        pst.close();
+        conn.close();
+            
+        }   catch (SQLException ex) {
+                Logger.getLogger(BillPay.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+    }
+    }
+  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton createNewAcc_btn;
     private javax.swing.JButton forum_navbtn;

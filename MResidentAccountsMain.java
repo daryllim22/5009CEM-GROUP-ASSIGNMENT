@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package apartment.management.system;
+package pkg5009cem_assignment;
 
 import java.sql.*;
 import java.util.logging.Level;
@@ -194,7 +194,7 @@ public class MResidentAccountsMain extends javax.swing.JFrame {
     private void visitorTrack_navbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitorTrack_navbtnActionPerformed
         
         close();
-        MVisitorTrackingMain pi = new MVisitorTrackingMain();
+        MVisitorTrackingMain pi = new MVisitorTrackingMain(username);
         pi.setTitle("Visitor Tracking");
         pi.setLocationRelativeTo(null);
         pi.setVisible(true);
@@ -205,7 +205,7 @@ public class MResidentAccountsMain extends javax.swing.JFrame {
     private void forum_navbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forum_navbtnActionPerformed
         
         close();
-        MFeedbackForumMain pi = new MFeedbackForumMain();
+        MFeedbackForumMain pi = new MFeedbackForumMain(username);
         pi.setTitle("Feedback Forum");
         pi.setLocationRelativeTo(null);
         pi.setVisible(true);
@@ -216,7 +216,7 @@ public class MResidentAccountsMain extends javax.swing.JFrame {
     private void paymentTrack_navbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paymentTrack_navbtnActionPerformed
         
         close();
-        MBillPayTrackingMain pi = new MBillPayTrackingMain();
+        MBillPayTrackingMain pi = new MBillPayTrackingMain(username);
         pi.setTitle("Bill Payment Tracking");
         pi.setLocationRelativeTo(null);
         pi.setVisible(true);
@@ -323,7 +323,7 @@ public class MResidentAccountsMain extends javax.swing.JFrame {
         conn.close();
             
         }   catch (SQLException ex) {
-                Logger.getLogger(BillPay.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(MResidentAccountsMain.class.getName()).log(Level.SEVERE, null, ex);
             }
         
     }

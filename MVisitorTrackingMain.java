@@ -27,7 +27,13 @@ public class MVisitorTrackingMain extends javax.swing.JFrame {
     }
     
     //variable declaration
+    private String username;
     private int month;
+    
+    MVisitorTrackingMain(String username) {
+        initComponents();
+        this.username = username;
+    }
     
     //close entire UI page when navbtn clicked
     public void close() {
@@ -485,7 +491,7 @@ public class MVisitorTrackingMain extends javax.swing.JFrame {
                 pst.close();
                 conn.close();
             } catch (SQLException ex) {
-                 Logger.getLogger(RD.class.getName()).log(Level.SEVERE, null, ex);
+                 Logger.getLogger(MVisitorTrackingMain.class.getName()).log(Level.SEVERE, null, ex);
              }
         }
     }

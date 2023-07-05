@@ -118,11 +118,11 @@ dispose();
 
             },
             new String [] {
-                "Title", "Problem"
+                "Unit-Number", "Title", "Problem"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -130,6 +130,10 @@ dispose();
             }
         });
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(10);
+            jTable1.getColumnModel().getColumn(1).setPreferredWidth(30);
+        }
 
         jDesktopPane2.setLayer(jButton7, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jButton8, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -314,11 +318,10 @@ dispose();
         Connection conn = ConnectDB.connectDB();
         if (conn != null) {
         try {
-            String query = "SELECT title,text FROM resident_forum WHERE unitnumber = ?";
+            String query = "SELECT title,text,unitnumber FROM resident_forum";
             
             PreparedStatement pst = conn.prepareStatement(query);
             
-            pst.setString(1,unitnumber);
             
             ResultSet rs = pst.executeQuery();
             
@@ -326,12 +329,13 @@ dispose();
             model.setRowCount(0);
             
             while (rs.next()) {
+            String name = rs.getString("unitnumber");
             String title = rs.getString("title");
             String text = rs.getString("text");
 
 
             // Add the data to the table
-            model.addRow(new Object[]{title,text});
+            model.addRow(new Object[]{name,title,text});
         }
         rs.close();
         pst.close();

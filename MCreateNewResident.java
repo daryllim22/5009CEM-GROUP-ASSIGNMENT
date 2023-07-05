@@ -2,9 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package pkg5009cem_assignment;
+package apartment.management.system;
 
-import pkg5009cem_assignment.MainLogin;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -66,19 +65,18 @@ public class MCreateNewResident extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(857, 497));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
         jDesktopPane1.setMaximumSize(new java.awt.Dimension(720, 460));
         jDesktopPane1.setMinimumSize(new java.awt.Dimension(720, 460));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Create new resident account");
 
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Unit number:");
 
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Password:");
 
+        createAcc_btn.setBackground(new java.awt.Color(255, 255, 255));
         createAcc_btn.setText("Create account");
         createAcc_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,6 +84,7 @@ public class MCreateNewResident extends javax.swing.JFrame {
             }
         });
 
+        back_btn.setBackground(new java.awt.Color(255, 255, 255));
         back_btn.setText("<BACK");
         back_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,6 +167,11 @@ public class MCreateNewResident extends javax.swing.JFrame {
         jPanel1.add(paymentTrack_navbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 130, -1));
 
         residentAcc_navbtn.setText("Resident Accounts");
+        residentAcc_navbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                residentAcc_navbtnActionPerformed(evt);
+            }
+        });
         jPanel1.add(residentAcc_navbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 130, -1));
 
         logout_btn.setText("Logout");
@@ -261,6 +265,10 @@ public class MCreateNewResident extends javax.swing.JFrame {
         
     }//GEN-LAST:event_createAcc_btnActionPerformed
 
+    private void residentAcc_navbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residentAcc_navbtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_residentAcc_navbtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -320,8 +328,6 @@ public class MCreateNewResident extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Account Created!");
                     close();
                     MResidentAccountsMain pi = new MResidentAccountsMain();
-                    pi.setTitle("Main Login Page");
-                    pi.setLocationRelativeTo(null); //center the form
                     pi.setVisible(true);
                 }
                 else {

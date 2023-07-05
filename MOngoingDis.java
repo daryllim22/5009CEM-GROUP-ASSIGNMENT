@@ -24,14 +24,18 @@ public class MOngoingDis extends javax.swing.JFrame {
      */
     public MOngoingDis() {
         initComponents();
-        displayThread();
+        displayThread(discussion);
     }
     
+    //variable declaration
     private String discussion;
+    private String username;
     
-    MOngoingDis(String discussion) {
+    MOngoingDis(String discussion, String username) {
+        initComponents();
         this.discussion = discussion;
-        displayThread();
+        this.username = username;
+        displayThread(discussion);
     }
     
     //close entire UI window when navbtn is clicked
@@ -202,7 +206,7 @@ public class MOngoingDis extends javax.swing.JFrame {
     private void paymentTrack_navbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paymentTrack_navbtnActionPerformed
 
         close();
-        MBillPayTrackingMain pi = new MBillPayTrackingMain();
+        MBillPayTrackingMain pi = new MBillPayTrackingMain(username);
         pi.setTitle("Bill Payment Tracking");
         pi.setLocationRelativeTo(null); //center the form
         pi.setVisible(true);
@@ -213,7 +217,7 @@ public class MOngoingDis extends javax.swing.JFrame {
     private void residentAcc_navbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residentAcc_navbtnActionPerformed
 
         close();
-        MResidentAccountsMain pi = new MResidentAccountsMain();
+        MResidentAccountsMain pi = new MResidentAccountsMain(username);
         pi.setTitle("Resident Accounts");
         pi.setLocationRelativeTo(null); //center the form
         pi.setVisible(true);
@@ -233,7 +237,7 @@ public class MOngoingDis extends javax.swing.JFrame {
         }
         else {
             dispose();
-            MVisitorTrackingMain pi = new MVisitorTrackingMain();
+            MOngoingDis pi = new MOngoingDis(discussion, username);
             pi.setTitle("Resident Accounts");
             pi.setLocationRelativeTo(null); //center the form
             pi.setVisible(true);
@@ -245,7 +249,7 @@ public class MOngoingDis extends javax.swing.JFrame {
     private void visitorTrack_navbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitorTrack_navbtnActionPerformed
         
         close();
-        MVisitorTrackingMain pi = new MVisitorTrackingMain();
+        MVisitorTrackingMain pi = new MVisitorTrackingMain(username);
         pi.setVisible(true);
         
     }//GEN-LAST:event_visitorTrack_navbtnActionPerformed
@@ -254,7 +258,9 @@ public class MOngoingDis extends javax.swing.JFrame {
     private void back_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_back_btnActionPerformed
         
         close();
-        MFeedbackForumMain pi = new MFeedbackForumMain();
+        MFeedbackForumMain pi = new MFeedbackForumMain(username);
+        pi.setTitle("Feedback Forum");
+        pi.setLocationRelativeTo(null); //center the form
         pi.setVisible(true);
         
     }//GEN-LAST:event_back_btnActionPerformed
@@ -297,36 +303,34 @@ public class MOngoingDis extends javax.swing.JFrame {
     
     
     //display ongoing discussion
-    private void displayThread() {
+    private void displayThread(String discussion) {
         
         Connection conn = ConnectDB.connectDB();
         if (conn != null) {
         try {
-            String query = "SELECT title,text FROM manager_forum WHERE id = ?";
-            
+            String query = "SELECT title,text,user FROM manager_forum WHERE title = ?";
             PreparedStatement pst = conn.prepareStatement(query);
-            
-            pst.setString(1, id);
+            pst.setString(1, discussion);
             
             ResultSet rs = pst.executeQuery();
             
-            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-            model.setRowCount(0);
-            
             while (rs.next()) {
+            String user = rs.getString("user");
             String title = rs.getString("title");
-            String text = rs.getString("text");
+            String content = rs.getString("text");
 
 
-            // Add the data to the table
-            model.addRow(new Object[]{title,text});
+            //Displaying the discussion
+            fUser_display.setText(user);
+            fTitle_display.setText(title);
+            fContent_display.setText(content);
         }
         rs.close();
         pst.close();
         conn.close();
             
         }   catch (SQLException ex) {
-                Logger.getLogger(BillPay.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(MOngoingDis.class.getName()).log(Level.SEVERE, null, ex);
             }
         
     }

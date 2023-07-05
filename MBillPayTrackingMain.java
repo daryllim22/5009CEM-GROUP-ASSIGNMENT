@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package apartment.management.system;
+package pkg5009cem_assignment;
 
+import pkg5009cem_assignment.MainLogin;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -191,7 +192,7 @@ public class MBillPayTrackingMain extends javax.swing.JFrame {
     private void visitorTrack_navbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitorTrack_navbtnActionPerformed
         
         close();
-        MVisitorTrackingMain pi = new MVisitorTrackingMain();
+        MVisitorTrackingMain pi = new MVisitorTrackingMain(username);
         pi.setTitle("Visitor Tracking");
         pi.setLocationRelativeTo(null); //center the form
         pi.setVisible(true);
@@ -202,7 +203,7 @@ public class MBillPayTrackingMain extends javax.swing.JFrame {
     private void forum_navbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forum_navbtnActionPerformed
         
         close();
-        MFeedbackForumMain pi = new MFeedbackForumMain();
+        MFeedbackForumMain pi = new MFeedbackForumMain(username);
         pi.setTitle("Feedback Forum");
         pi.setLocationRelativeTo(null); //center the form
         pi.setVisible(true);
@@ -213,7 +214,7 @@ public class MBillPayTrackingMain extends javax.swing.JFrame {
     private void residentAcc_navbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residentAcc_navbtnActionPerformed
     
         close();
-        MResidentAccountsMain pi = new MResidentAccountsMain();
+        MResidentAccountsMain pi = new MResidentAccountsMain(username);
         pi.setTitle("Resident Accounts");
         pi.setLocationRelativeTo(null); //center the form
         pi.setVisible(true);
@@ -233,7 +234,7 @@ public class MBillPayTrackingMain extends javax.swing.JFrame {
             }
             else {
                 dispose();
-                MBillPayTrackingMain pi = new MBillPayTrackingMain();
+                MBillPayTrackingMain pi = new MBillPayTrackingMain(username);
                 pi.setTitle("Resident Accounts");
                 pi.setLocationRelativeTo(null); //center the form
                 pi.setVisible(true);
@@ -310,7 +311,7 @@ public class MBillPayTrackingMain extends javax.swing.JFrame {
         conn.close();
             
         }   catch (SQLException ex) {
-                Logger.getLogger(BillPay.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(MBillPayTrackingMain.class.getName()).log(Level.SEVERE, null, ex);
             }
         
     }

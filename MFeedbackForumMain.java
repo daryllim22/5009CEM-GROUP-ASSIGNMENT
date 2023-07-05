@@ -121,7 +121,9 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
                         String discussion = (String) mForumDis_table.getValueAt(selected,0);
 
                         close();
-                        MOngoingDis pi = new MOngoingDis(discussion);
+                        MOngoingDis pi = new MOngoingDis(discussion, username);
+                        pi.setTitle(discussion);
+                        pi.setLocationRelativeTo(null); //center the form
                         pi.setVisible(true);
                     }
                 }
@@ -194,7 +196,7 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
     private void visitorTrack_navbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitorTrack_navbtnActionPerformed
         
         close();
-        MVisitorTrackingMain pi = new MVisitorTrackingMain();
+        MVisitorTrackingMain pi = new MVisitorTrackingMain(username);
         pi.setTitle("Visitor Tracking");
         pi.setLocationRelativeTo(null); //center the form
         pi.setVisible(true);
@@ -205,7 +207,7 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
     private void paymentTrack_navbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paymentTrack_navbtnActionPerformed
     
         close();
-        MBillPayTrackingMain pi = new MBillPayTrackingMain();
+        MBillPayTrackingMain pi = new MBillPayTrackingMain(username);
         pi.setTitle("Bill Payment Tracking");
         pi.setLocationRelativeTo(null); //center the form
         pi.setVisible(true);
@@ -216,7 +218,7 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
     private void residentAcc_navbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residentAcc_navbtnActionPerformed
     
         close();
-        MResidentAccountsMain pi = new MResidentAccountsMain();
+        MResidentAccountsMain pi = new MResidentAccountsMain(username);
         pi.setTitle("Resident Accounts");
         pi.setLocationRelativeTo(null); //center the form
         pi.setVisible(true);
@@ -236,7 +238,7 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
             }
             else {
                 dispose();
-                MFeedbackForumMain pi = new MFeedbackForumMain();
+                MFeedbackForumMain pi = new MFeedbackForumMain(username);
                 pi.setTitle("Resident Accounts");
                 pi.setLocationRelativeTo(null); //center the form
                 pi.setVisible(true);
@@ -327,7 +329,7 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
                 pst.close();
                 conn.close();
             } catch (SQLException ex) {
-                 Logger.getLogger(RD.class.getName()).log(Level.SEVERE, null, ex);
+                 Logger.getLogger(MFeedbackForumMain.class.getName()).log(Level.SEVERE, null, ex);
              }
         }
         

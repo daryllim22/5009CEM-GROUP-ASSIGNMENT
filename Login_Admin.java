@@ -1,4 +1,4 @@
-package apartment.management.system;
+package pkg5009cem_assignment;
 
 
 import javax.swing.*;
@@ -236,8 +236,8 @@ public class Login_Admin extends javax.swing.JFrame {
                 
                 
                 //Go to adminmainpage after login successful
-                MFeedbackForumMain login = new MFeedbackForumMain(username);
-                login.setTitle("Admin Home Page");
+                MVisitorTrackingMain login = new MVisitorTrackingMain(username);
+                login.setTitle("Visitor Tracking");
                 login.setLocationRelativeTo(null); //center the form
                 login.setVisible(true);
                 //setVisible(false);

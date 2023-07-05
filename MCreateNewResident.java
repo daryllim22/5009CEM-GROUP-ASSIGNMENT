@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package apartment.management.system;
+package pkg5009cem_assignment;
 
+import pkg5009cem_assignment.MainLogin;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -319,6 +320,8 @@ public class MCreateNewResident extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Account Created!");
                     close();
                     MResidentAccountsMain pi = new MResidentAccountsMain();
+                    pi.setTitle("Main Login Page");
+                    pi.setLocationRelativeTo(null); //center the form
                     pi.setVisible(true);
                 }
                 else {

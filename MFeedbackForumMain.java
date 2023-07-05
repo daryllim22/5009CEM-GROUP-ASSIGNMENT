@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package pkg5009cem_assignment;
+package apartment.management.system;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,8 +11,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -108,25 +106,6 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
-            }
-        });
-        //making the table row clickable
-        mForumDis_table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                if(!e.getValueIsAdjusting()) {
-                    int selected = mForumDis_table.getSelectedRow();
-
-                    if (selected != -1) {
-                        String discussion = (String) mForumDis_table.getValueAt(selected,0);
-
-                        close();
-                        MOngoingDis pi = new MOngoingDis(discussion, username);
-                        pi.setTitle(discussion);
-                        pi.setLocationRelativeTo(null); //center the form
-                        pi.setVisible(true);
-                    }
-                }
             }
         });
         jScrollPane1.setViewportView(mForumDis_table);
@@ -259,7 +238,6 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
     }//GEN-LAST:event_newDis_btnActionPerformed
     
     
-    
     /**
      * @param args the command line arguments
      */
@@ -298,10 +276,6 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
     
     
     
-    //sini sini
-    
-    
-    
     //display discussions
     private void displayDiscussions() {
         
@@ -309,7 +283,7 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
         if (conn != null) {
             try {
                 //Statement st = conn.createStatement();
-                PreparedStatement pst = (PreparedStatement) conn.prepareStatement("SELECT * FROM manager_forum");
+                PreparedStatement pst = (PreparedStatement) conn.prepareStatement("SELECT * FROM manager_forum ");
                 //pst.setString(1, "title"); //telling the system to query for data inside "title"
                 
                 ResultSet rs = pst.executeQuery();
@@ -319,17 +293,17 @@ public class MFeedbackForumMain extends javax.swing.JFrame {
                 
                 while (rs.next()) {
                     
-                    String disTitle = rs.getString("title");
-
-                    //add data to the table
-                    model.addRow(new Object[]{disTitle});
- 
+                    String title = rs.getString("title");
+                    
+                    model.addRow(new Object[]{title});
+                    
+                    
                 }
                 rs.close();
                 pst.close();
                 conn.close();
             } catch (SQLException ex) {
-                 Logger.getLogger(MFeedbackForumMain.class.getName()).log(Level.SEVERE, null, ex);
+                 Logger.getLogger(RD.class.getName()).log(Level.SEVERE, null, ex);
              }
         }
         
